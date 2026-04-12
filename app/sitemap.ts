@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://teleba-landing-page.vercel.app";
+const BASE_URL = "https://teleba.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
