@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       "Stop drowning in paperwork. Teleba helps mobile money and banking agents in Uganda reconcile accounts, track commissions, and grow their business.",
     images: [
       {
-        url: "/opengraph-image",
+        url: `${BASE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Teleba — The Agent-First Platform",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     title: "Teleba — The Agent-First Platform for Telecom & Banking Agents",
     description:
       "Stop drowning in paperwork. Teleba helps mobile money and banking agents in Uganda reconcile accounts, track commissions, and grow their business.",
-    images: ["/opengraph-image"],
+    images: [`${BASE_URL}/opengraph-image`],
   },
   robots: {
     index: true,
