@@ -36,7 +36,7 @@ export default function Home() {
           </div>
           <a
             href="#cta"
-            className="hidden sm:inline-flex rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-900 transition-colors"
+            className="rounded-full bg-brand-red px-4 py-2 text-sm font-semibold text-white hover:bg-red-900 transition-colors"
           >
             Get Early Access
           </a>
@@ -98,7 +98,7 @@ export default function Home() {
       {/* Problems */}
       <section id="problems" className="scroll-mt-20 bg-gray-50 py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               The Challenges Agents Face Every Day
             </h2>
@@ -160,7 +160,7 @@ export default function Home() {
       {/* Features */}
       <section id="features" className="scroll-mt-20 py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Everything You Need, One App
             </h2>
@@ -169,7 +169,7 @@ export default function Home() {
               a purpose-built platform for agents.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-5 md:gap-10">
             {[
               {
                 icon: "⚡",
@@ -227,7 +227,7 @@ export default function Home() {
         className="scroll-mt-20 bg-gray-50 py-20 md:py-28"
       >
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               How Teleba Works
             </h2>
@@ -235,7 +235,7 @@ export default function Home() {
               Three simple steps to transform your daily operations.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-10">
             {[
               {
                 step: "1",
@@ -279,7 +279,7 @@ export default function Home() {
             Teleba is completely free during our launch phase. Full features, no
             hidden costs, no credit card required.
           </p>
-          <div className="mt-12 rounded-2xl border-2 border-brand-gold bg-white p-10 shadow-md hover:shadow-lg transition-shadow max-w-md mx-auto">
+          <div className="mt-12 rounded-2xl border-2 border-brand-gold bg-white p-6 sm:p-10 shadow-md hover:shadow-lg transition-shadow max-w-md mx-auto">
             <span className="inline-block rounded-full bg-brand-gold/20 px-4 py-1 text-sm font-semibold text-brand-gold-dark">
               Launch Offer
             </span>
