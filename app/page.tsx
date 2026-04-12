@@ -330,7 +330,7 @@ export default function Home() {
               Contact Us — info@teleba.io
             </a>
             <a
-              href="tel:+256700000000"
+              href="tel:+256789545073"
               className="rounded-full border-2 border-white/40 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors"
             >
               Call Us
