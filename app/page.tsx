@@ -1,6 +1,60 @@
+const BASE_URL = "https://teleba-landing-page.vercel.app";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${BASE_URL}/#organization`,
+      name: "Teleba",
+      url: BASE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/opengraph-image`,
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+256789545073",
+        contactType: "customer support",
+        email: "info@teleba.io",
+        areaServed: "UG",
+        availableLanguage: "English",
+      },
+      sameAs: [],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${BASE_URL}/#website`,
+      url: BASE_URL,
+      name: "Teleba",
+      description:
+        "The Agent-First Platform for Telecom and Banking Agents in Uganda",
+      publisher: { "@id": `${BASE_URL}/#organization` },
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "Teleba",
+      operatingSystem: "Android, iOS, Web",
+      applicationCategory: "BusinessApplication",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "UGX",
+      },
+      description:
+        "Teleba helps mobile money and banking agents reconcile accounts, track commissions, manage float, and grow their business.",
+    },
+  ],
+};
+
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="flex flex-col min-h-screen bg-white">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -358,5 +412,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
