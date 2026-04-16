@@ -1,3 +1,5 @@
+import { WaitlistForm } from "./components/WaitlistForm";
+
 const BASE_URL = "https://teleba.io";
 
 const jsonLd = {
@@ -417,20 +419,26 @@ export default function Home() {
               Join the growing community of agents in Uganda who are digitizing
               their operations with Teleba. Early access is completely free.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="mt-10">
+              <WaitlistForm />
+            </div>
+            <p className="mt-6 text-sm text-red-200">
+              Prefer to reach out directly?{" "}
               <a
                 href="mailto:info@teleba.io"
-                className="rounded-full bg-brand-gold px-8 py-3.5 text-base font-bold text-gray-900 hover:bg-brand-gold-dark transition-colors shadow-lg"
+                className="underline hover:text-white transition-colors"
               >
-                Contact Us — info@teleba.io
-              </a>
+                Email us at info@teleba.io
+              </a>{" "}
+              or{" "}
               <a
                 href="tel:+256789545073"
-                className="rounded-full border-2 border-white/40 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors"
+                className="underline hover:text-white transition-colors"
               >
-                Call Us
+                call us
               </a>
-            </div>
+              .
+            </p>
           </div>
         </section>
 
