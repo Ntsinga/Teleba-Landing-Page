@@ -90,12 +90,20 @@ export default function Home() {
                 Pricing
               </a>
             </div>
-            <a
-              href="#cta"
-              className="rounded-full bg-brand-red px-4 py-2 text-sm font-semibold text-white hover:bg-red-900 transition-colors"
-            >
-              Get Early Access
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://zesha.app.elijahntsinga.com/(auth)/sign-in"
+                className="text-sm font-semibold text-gray-600 hover:text-brand-red transition-colors"
+              >
+                Sign In
+              </a>
+              <a
+                href="#cta"
+                className="rounded-full bg-brand-red px-4 py-2 text-sm font-semibold text-white hover:bg-red-900 transition-colors"
+              >
+                Get Early Access
+              </a>
+            </div>
           </div>
         </nav>
 
@@ -423,6 +431,15 @@ export default function Home() {
               <WaitlistForm />
             </div>
             <p className="mt-6 text-sm text-red-200">
+              Already have an account?{" "}
+              <a
+                href="https://zesha.app.elijahntsinga.com/(auth)/sign-in"
+                className="font-semibold underline hover:text-white transition-colors"
+              >
+                Sign in to the app →
+              </a>
+            </p>
+            <p className="mt-3 text-sm text-red-200">
               Prefer to reach out directly?{" "}
               <a
                 href="mailto:info@teleba.io"
