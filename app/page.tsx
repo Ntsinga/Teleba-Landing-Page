@@ -64,7 +64,7 @@ export default function Home() {
               <span className="text-brand-red">Tele</span>
               <span className="text-brand-gold-dark">ba</span>
             </span>
-            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
               <a
                 href="#problems"
                 className="hover:text-brand-red transition-colors"
@@ -90,16 +90,16 @@ export default function Home() {
                 Pricing
               </a>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <a
                 href="https://app.teleba.io/(auth)/sign-in"
-                className="text-sm font-semibold text-gray-600 hover:text-brand-red transition-colors"
+                className="hidden sm:inline text-sm font-medium text-gray-600 hover:text-brand-red transition-colors"
               >
                 Sign In
               </a>
               <a
                 href="#cta"
-                className="rounded-full bg-brand-red px-4 py-2 text-sm font-semibold text-white hover:bg-red-900 transition-colors"
+                className="btn-primary-gradient rounded-full px-5 py-2 text-sm font-semibold text-white"
               >
                 Get Early Access
               </a>
@@ -108,53 +108,61 @@ export default function Home() {
         </nav>
 
         {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-brand-red-light via-white to-white">
-          <div className="max-w-6xl mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
-            <span className="inline-block mb-4 rounded-full bg-brand-gold/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold-dark">
+        <section className="relative overflow-hidden bg-gradient-to-br from-brand-red-deep via-brand-red-dark to-brand-red">
+          {/* Decorative rings */}
+          <div className="hero-ring" style={{ width: 700, height: 700, top: -200, right: -150 }} />
+          <div className="hero-ring" style={{ width: 500, height: 500, bottom: -100, left: -100 }} />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(255,50,50,0.18),transparent_70%)] pointer-events-none" />
+
+          <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-36 flex flex-col items-center text-center">
+            <span className="inline-block mb-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
               Now piloting in Uganda
             </span>
-            <h1 className="max-w-3xl text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-gray-900">
-              The <span className="text-brand-red">Agent-First</span> Platform
-              for Telecom &amp; Banking Agents
+            <h1 className="max-w-3xl text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white">
+              The{" "}
+              <span className="brand-text-gradient">Agent-First</span>{" "}
+              Platform for Telecom &amp; Banking Agents
             </h1>
-            <p className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-gray-600">
+            <p className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-red-100/80">
               One app for all your float accounts, commissions, and
               reconciliation — in 15 minutes a day.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a
                 href="#cta"
-                className="rounded-full bg-brand-red px-8 py-3.5 text-base font-semibold text-white shadow-lg hover:bg-red-900 transition-colors"
+                className="rounded-full bg-brand-gold px-8 py-3.5 text-base font-bold text-brand-red-deep shadow-lg hover:bg-brand-gold-dark transition-all hover:shadow-xl hover:-translate-y-0.5"
               >
                 Join the Waitlist — It&apos;s Free
               </a>
               <a
                 href="#features"
-                className="rounded-full border-2 border-brand-red px-8 py-3.5 text-base font-semibold text-brand-red hover:bg-brand-red-light transition-colors"
+                className="rounded-full border-2 border-white/30 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors"
               >
                 See Features
               </a>
             </div>
-            <p className="mt-4 text-sm text-gray-500">
+            <p className="mt-5 text-sm text-red-200/60">
               Available on{" "}
-              <span className="font-semibold text-gray-700">Android, Web</span>
+              <span className="font-semibold text-red-100/80">
+                Android &amp; Web
+              </span>
             </p>
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 text-center">
               <div>
-                <p className="text-3xl font-bold text-brand-red">7+</p>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-3xl font-bold text-brand-gold">7+</p>
+                <p className="text-sm text-red-200/60 mt-1">
                   Account books replaced
                 </p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-brand-red">2hrs</p>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-3xl font-bold text-brand-gold">2hrs</p>
+                <p className="text-sm text-red-200/60 mt-1">
                   Saved daily on reconciliation
                 </p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-brand-red">100%</p>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-3xl font-bold text-brand-gold">100%</p>
+                <p className="text-sm text-red-200/60 mt-1">
                   Commission transparency
                 </p>
               </div>
@@ -212,7 +220,7 @@ export default function Home() {
               ].map((problem) => (
                 <div
                   key={problem.title}
-                  className="rounded-2xl bg-white p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                  className="card-hover rounded-2xl bg-white p-8 shadow-sm border border-gray-200/60"
                 >
                   <span className="text-3xl">{problem.icon}</span>
                   <h3 className="mt-4 text-lg font-bold text-gray-900">
@@ -274,7 +282,7 @@ export default function Home() {
               ].map((feature) => (
                 <div
                   key={feature.title}
-                  className="flex gap-5 rounded-2xl border border-gray-100 p-6 hover:border-brand-red/20 transition-colors"
+                  className="card-hover flex gap-5 rounded-2xl border border-gray-200/60 bg-white p-6 shadow-sm"
                 >
                   <span className="text-2xl mt-1 shrink-0">{feature.icon}</span>
                   <div>
@@ -324,7 +332,7 @@ export default function Home() {
                 },
               ].map((item) => (
                 <div key={item.step} className="text-center">
-                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-brand-red text-white text-xl font-bold">
+                  <div className="step-circle inline-flex h-14 w-14 items-center justify-center rounded-full text-white text-xl font-bold">
                     {item.step}
                   </div>
                   <h3 className="mt-5 text-xl font-bold text-gray-900">
@@ -381,7 +389,7 @@ export default function Home() {
               Teleba is completely free during our launch phase. Full features,
               no hidden costs, no credit card required.
             </p>
-            <div className="mt-12 rounded-2xl border-2 border-brand-gold bg-white p-6 sm:p-10 shadow-md hover:shadow-lg transition-shadow max-w-md mx-auto">
+            <div className="mt-12 gold-accent-card rounded-2xl p-6 sm:p-10 max-w-md mx-auto">
               <span className="inline-block rounded-full bg-brand-gold/20 px-4 py-1 text-sm font-semibold text-brand-gold-dark">
                 Free through Q2 2026
               </span>
@@ -409,7 +417,7 @@ export default function Home() {
               </ul>
               <a
                 href="#cta"
-                className="mt-8 block rounded-full bg-brand-red px-8 py-3.5 text-base font-semibold text-white hover:bg-red-900 transition-colors"
+                className="btn-primary-gradient mt-8 block rounded-full px-8 py-3.5 text-base font-semibold text-white"
               >
                 Get Early Access
               </a>
@@ -418,7 +426,7 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section id="cta" className="scroll-mt-20 bg-brand-red py-20 md:py-28">
+        <section id="cta" className="cta-gradient scroll-mt-20 py-20 md:py-28">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
               Ready to Take Control of Your Business?
@@ -492,7 +500,7 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item.q}
-                  className="rounded-2xl bg-white border border-gray-100 p-6 shadow-sm"
+                  className="card-hover rounded-2xl bg-white border border-gray-200/60 p-6 shadow-sm"
                 >
                   <h3 className="text-base font-bold text-gray-900">
                     {item.q}
@@ -505,12 +513,12 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-900 py-12">
+        <footer className="bg-gradient-to-b from-gray-900 to-gray-950 py-12">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <span className="text-xl font-bold">
                 <span className="text-brand-red">Tele</span>
-                <span className="text-brand-gold">ba</span>
+                <span className="brand-text-gradient">ba</span>
               </span>
               <p className="text-gray-400 text-sm">
                 Telecom &amp; Banking Agent Application — Made for Uganda&apos;s

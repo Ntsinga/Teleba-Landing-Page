@@ -3,16 +3,20 @@
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --brand-red: #c62828;
+  --brand-red: #c0152a;
+  --brand-red-dark: #8e0c1a;
+  --brand-red-deep: #5b0611;
   --brand-red-light: #ffebee;
   --brand-gold: #fdd835;
-  --brand-gold-dark: #fbc02d;
+  --brand-gold-dark: #b8860b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-brand-red: var(--brand-red);
+  --color-brand-red-dark: var(--brand-red-dark);
+  --color-brand-red-deep: var(--brand-red-deep);
   --color-brand-red-light: var(--brand-red-light);
   --color-brand-gold: var(--brand-gold);
   --color-brand-gold-dark: var(--brand-gold-dark);
@@ -28,4 +32,77 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Hero decorative rings — matches web app sidebar/auth aesthetic */
+.hero-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+/* Gradient text for the brand title — mirrors TELEBA auth panel */
+.brand-text-gradient {
+  background: linear-gradient(180deg, #ffe566 0%, #ffd700 50%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.25));
+}
+
+/* Primary button gradient — matches app's primary button */
+.btn-primary-gradient {
+  background: linear-gradient(135deg, #c0152a 0%, #8e0c1a 100%);
+  box-shadow: 0 4px 14px rgba(192, 21, 42, 0.3);
+  transition: all 0.2s ease;
+}
+.btn-primary-gradient:hover {
+  background: linear-gradient(135deg, #9a0e1f 0%, #6b0714 100%);
+  box-shadow: 0 6px 20px rgba(192, 21, 42, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Gold accent card — matches app's featured gold card style */
+.gold-accent-card {
+  background: linear-gradient(
+    135deg,
+    rgba(253, 216, 53, 0.08) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border: 2px solid var(--brand-gold);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.1);
+}
+
+/* Subtle card hover effect */
+.card-hover {
+  transition: all 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* CTA section gradient — matches app's sidebar gradient */
+.cta-gradient {
+  background: linear-gradient(170deg, #c0152a 0%, #8e0c1a 55%, #5b0611 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cta-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(255, 50, 50, 0.15),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Step number circle with gradient */
+.step-circle {
+  background: linear-gradient(135deg, #c0152a 0%, #8e0c1a 100%);
+  box-shadow: 0 4px 12px rgba(192, 21, 42, 0.25);
 }
