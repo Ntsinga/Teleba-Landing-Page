@@ -108,9 +108,8 @@ export default function Home() {
               for Telecom &amp; Banking Agents
             </h1>
             <p className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-gray-600">
-              Stop drowning in paperwork. Teleba puts all your mobile money and
-              bank transactions in one place, shows you what&apos;s actually
-              profitable, and helps you make more money with the same effort.
+              One app for all your float accounts, commissions, and
+              reconciliation — in 15 minutes a day.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a
@@ -126,7 +125,11 @@ export default function Home() {
                 See Features
               </a>
             </div>
-            <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
+            <p className="mt-4 text-sm text-gray-500">
+              Available on{" "}
+              <span className="font-semibold text-gray-700">Android, Web</span>
+            </p>
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
               <div>
                 <p className="text-3xl font-bold text-brand-red">7+</p>
                 <p className="text-sm text-gray-500 mt-1">
@@ -326,6 +329,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Social Proof
+        <section className="scroll-mt-20 py-16 md:py-24 border-t border-gray-100">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <span className="inline-block mb-4 rounded-full bg-brand-gold/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold-dark">
+              From the pilot
+            </span>
+            <blockquote className="mt-4 text-xl md:text-2xl font-medium leading-relaxed text-gray-800 italic max-w-3xl mx-auto">
+              &ldquo;Before Teleba, reconciliation took me almost two hours every
+              night. Now I&apos;m done in 20 minutes and I can actually see
+              which network pays me the most.&rdquo;
+            </blockquote>
+            <p className="mt-6 text-sm font-semibold text-gray-700">Sarah K.</p>
+            <p className="text-sm text-gray-500">MTN Mobile Money Agent, Kampala</p>
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+              <div className="rounded-2xl bg-gray-50 border border-gray-100 p-6">
+                <p className="text-3xl font-bold text-brand-red">12</p>
+                <p className="text-sm text-gray-500 mt-1">Agents in active pilot</p>
+              </div>
+              <div className="rounded-2xl bg-gray-50 border border-gray-100 p-6">
+                <p className="text-3xl font-bold text-brand-red">~20 min</p>
+                <p className="text-sm text-gray-500 mt-1">
+                  Average reconciliation time
+                </p>
+              </div>
+              <div className="rounded-2xl bg-gray-50 border border-gray-100 p-6">
+                <p className="text-3xl font-bold text-brand-red">Uganda</p>
+                <p className="text-sm text-gray-500 mt-1">Active pilot location</p>
+              </div>
+            </div>
+          </div>
+        </section> */}
+
         {/* Pricing */}
         <section id="pricing" className="scroll-mt-20 py-20 md:py-28">
           <div className="max-w-4xl mx-auto px-6 text-center">
@@ -338,11 +373,14 @@ export default function Home() {
             </p>
             <div className="mt-12 rounded-2xl border-2 border-brand-gold bg-white p-6 sm:p-10 shadow-md hover:shadow-lg transition-shadow max-w-md mx-auto">
               <span className="inline-block rounded-full bg-brand-gold/20 px-4 py-1 text-sm font-semibold text-brand-gold-dark">
-                Launch Offer
+                Free through Q2 2026
               </span>
               <p className="mt-6 text-5xl font-extrabold text-gray-900">Free</p>
               <p className="text-gray-500 mt-1">
                 for all agents during early access
+              </p>
+              <p className="mt-2 text-sm font-semibold text-brand-red">
+                Accepting first 100 agents — spots filling up
               </p>
               <ul className="mt-8 space-y-3 text-left text-gray-700">
                 {[
@@ -396,6 +434,51 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FAQ */}
+        <section className="scroll-mt-20 bg-gray-50 py-20 md:py-28">
+          <div className="max-w-3xl mx-auto px-6">
+            <div className="text-center mb-10 md:mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Frequently Asked Questions
+              </h2>
+            </div>
+            <div className="space-y-4">
+              {[
+                {
+                  q: "What devices does Teleba work on?",
+                  a: "Teleba works on Android phones and any web browser on a computer or tablet. You don't need a specific device — if you can browse the internet, you can use Teleba.",
+                },
+                {
+                  q: "Does it work offline or in areas with poor network?",
+                  a: "Yes. Teleba is built for real agent conditions. You can record transactions offline and they sync automatically once your connection is restored.",
+                },
+                {
+                  q: "Is my business data safe?",
+                  a: "Your data is encrypted and stored securely in the cloud. Only you and the people you grant access to — like a supervisor — can see your records.",
+                },
+                {
+                  q: "What happens when the free period ends?",
+                  a: "We'll give you plenty of notice before any pricing changes. Agents who join during early access will get preferential rates. No surprise costs.",
+                },
+                {
+                  q: "How long does it take to get started?",
+                  a: "Most agents are fully set up by the end of their first shift. You'll add your accounts, record a few transactions, and reconcile once — and from there it's just your normal routine.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.q}
+                  className="rounded-2xl bg-white border border-gray-100 p-6 shadow-sm"
+                >
+                  <h3 className="text-base font-bold text-gray-900">
+                    {item.q}
+                  </h3>
+                  <p className="mt-3 text-gray-600 leading-relaxed">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer className="bg-gray-900 py-12">
           <div className="max-w-6xl mx-auto px-6">
@@ -405,8 +488,8 @@ export default function Home() {
                 <span className="text-brand-gold">ba</span>
               </span>
               <p className="text-gray-400 text-sm">
-                Telecom &amp; Banking Agent Application — Built for agents, by
-                people who understand the hustle.
+                Telecom &amp; Banking Agent Application — Made for Uganda&apos;s
+                agents.
               </p>
               <p className="text-gray-500 text-sm">
                 &copy; {new Date().getFullYear()} Teleba. All rights reserved.
