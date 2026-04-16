@@ -92,7 +92,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-3">
               <a
-                href="https://zesha.app.elijahntsinga.com/(auth)/sign-in"
+                href="https://app.teleba.io/(auth)/sign-in"
                 className="text-sm font-semibold text-gray-600 hover:text-brand-red transition-colors"
               >
                 Sign In
@@ -433,7 +433,7 @@ export default function Home() {
             <p className="mt-6 text-sm text-red-200">
               Already have an account?{" "}
               <a
-                href="https://zesha.app.elijahntsinga.com/(auth)/sign-in"
+                href="https://app.teleba.io/(auth)/sign-in"
                 className="font-semibold underline hover:text-white transition-colors"
               >
                 Sign in to the app →
