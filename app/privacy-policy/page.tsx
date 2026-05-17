@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
       </nav>
 
       {/* Content */}
-      <main className="flex-1 max-w-3xl mx-auto px-6 py-16 md:py-24">
+      <main className="flex-1 max-w-4xl mx-auto px-6 py-16 md:py-24">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
           Privacy Policy
         </h1>
