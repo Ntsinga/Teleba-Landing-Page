@@ -110,8 +110,14 @@ export default function Home() {
         {/* Hero */}
         <section className="relative overflow-hidden bg-gradient-to-br from-brand-red-deep via-brand-red-dark to-brand-red">
           {/* Decorative rings */}
-          <div className="hero-ring" style={{ width: 700, height: 700, top: -200, right: -150 }} />
-          <div className="hero-ring" style={{ width: 500, height: 500, bottom: -100, left: -100 }} />
+          <div
+            className="hero-ring"
+            style={{ width: 700, height: 700, top: -200, right: -150 }}
+          />
+          <div
+            className="hero-ring"
+            style={{ width: 500, height: 500, bottom: -100, left: -100 }}
+          />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(255,50,50,0.18),transparent_70%)] pointer-events-none" />
 
           <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-36 flex flex-col items-center text-center">
@@ -119,8 +125,7 @@ export default function Home() {
               Now piloting in Uganda
             </span>
             <h1 className="max-w-3xl text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white">
-              The{" "}
-              <span className="brand-text-gradient">Agent-First</span>{" "}
+              The <span className="brand-text-gradient">Agent-First</span>{" "}
               Platform for Telecom &amp; Banking Agents
             </h1>
             <p className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-red-100/80">
@@ -524,9 +529,18 @@ export default function Home() {
                 Telecom &amp; Banking Agent Application — Made for Uganda&apos;s
                 agents.
               </p>
-              <p className="text-gray-500 text-sm">
-                &copy; {new Date().getFullYear()} Teleba. All rights reserved.
-              </p>
+              <div className="flex items-center gap-4 text-sm">
+                <a
+                  href="/privacy-policy"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </a>
+                <span className="text-gray-600">·</span>
+                <p className="text-gray-500">
+                  &copy; {new Date().getFullYear()} Teleba. All rights reserved.
+                </p>
+              </div>
             </div>
           </div>
         </footer>
