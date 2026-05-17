@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -15,10 +16,10 @@ export default function PrivacyPolicy() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="/" className="text-2xl font-bold tracking-tight">
+          <Link href="/" className="text-2xl font-bold tracking-tight">
             <span className="text-brand-red">Tele</span>
             <span className="text-brand-gold-dark">ba</span>
-          </a>
+          </Link>
         </div>
       </nav>
 
@@ -234,10 +235,10 @@ export default function PrivacyPolicy() {
       <footer className="bg-gradient-to-b from-gray-900 to-gray-950 py-12">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <a href="/" className="text-xl font-bold">
+            <Link href="/" className="text-xl font-bold">
               <span className="text-brand-red">Tele</span>
               <span className="brand-text-gradient">ba</span>
-            </a>
+            </Link>
             <p className="text-gray-400 text-sm">
               Telecom &amp; Banking Agent Application — Made for Uganda&apos;s
               agents.
