@@ -1,4 +1,10 @@
 import { WaitlistForm } from "./components/WaitlistForm";
+import { AppScreenshots } from "./components/AppScreenshots";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+} from "./components/AnimatedSection";
 
 const BASE_URL = "https://teleba.io";
 
@@ -76,6 +82,12 @@ export default function Home() {
                 className="hover:text-brand-red transition-colors"
               >
                 Features
+              </a>
+              <a
+                href="#app-preview"
+                className="hover:text-brand-red transition-colors"
+              >
+                App
               </a>
               <a
                 href="#how-it-works"
@@ -181,7 +193,7 @@ export default function Home() {
           className="scroll-mt-20 bg-gray-50 py-20 md:py-28"
         >
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-10 md:mb-16">
+            <AnimatedSection className="text-center mb-10 md:mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 The Challenges Agents Face Every Day
               </h2>
@@ -189,8 +201,8 @@ export default function Home() {
                 Managing 7+ account books, reconciling for hours, and never
                 knowing if you&apos;re being paid correctly — sound familiar?
               </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </AnimatedSection>
+            <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
                   icon: "📒",
@@ -223,7 +235,7 @@ export default function Home() {
                   desc: "Too much float, not enough cash — or vice versa. No data-driven guidance on optimal allocation.",
                 },
               ].map((problem) => (
-                <div
+                <StaggerItem
                   key={problem.title}
                   className="card-hover rounded-2xl bg-white p-8 shadow-sm border border-gray-200/60"
                 >
@@ -234,16 +246,16 @@ export default function Home() {
                   <p className="mt-2 text-gray-600 leading-relaxed">
                     {problem.desc}
                   </p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
         {/* Features */}
         <section id="features" className="scroll-mt-20 py-20 md:py-28">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-10 md:mb-16">
+            <AnimatedSection className="text-center mb-10 md:mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Everything You Need, One App
               </h2>
@@ -251,8 +263,8 @@ export default function Home() {
                 Teleba replaces your paper books, spreadsheets, and guesswork
                 with a purpose-built platform for agents.
               </p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-5 md:gap-10">
+            </AnimatedSection>
+            <StaggerContainer className="grid md:grid-cols-2 gap-5 md:gap-10">
               {[
                 {
                   icon: "⚡",
@@ -285,7 +297,7 @@ export default function Home() {
                   desc: "See which services are most profitable, transaction volume trends, and data-driven recommendations to grow your earnings.",
                 },
               ].map((feature) => (
-                <div
+                <StaggerItem
                   key={feature.title}
                   className="card-hover flex gap-5 rounded-2xl border border-gray-200/60 bg-white p-6 shadow-sm"
                 >
@@ -298,9 +310,9 @@ export default function Home() {
                       {feature.desc}
                     </p>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
@@ -310,15 +322,15 @@ export default function Home() {
           className="scroll-mt-20 bg-gray-50 py-20 md:py-28"
         >
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-10 md:mb-16">
+            <AnimatedSection className="text-center mb-10 md:mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 How Teleba Works
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-lg">
                 Three simple steps to transform your daily operations.
               </p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8 md:gap-10">
+            </AnimatedSection>
+            <StaggerContainer className="grid md:grid-cols-3 gap-8 md:gap-10">
               {[
                 {
                   step: "1",
@@ -336,7 +348,7 @@ export default function Home() {
                   desc: "Use commission insights, expense breakdowns, and liquidity recommendations to make smarter decisions every day.",
                 },
               ].map((item) => (
-                <div key={item.step} className="text-center">
+                <StaggerItem key={item.step} className="text-center">
                   <div className="step-circle inline-flex h-14 w-14 items-center justify-center rounded-full text-white text-xl font-bold">
                     {item.step}
                   </div>
@@ -346,11 +358,14 @@ export default function Home() {
                   <p className="mt-3 text-gray-600 leading-relaxed">
                     {item.desc}
                   </p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
+
+        {/* App Screenshots */}
+        <AppScreenshots />
 
         {/* Social Proof
         <section className="scroll-mt-20 py-16 md:py-24 border-t border-gray-100">
@@ -387,14 +402,19 @@ export default function Home() {
         {/* Pricing */}
         <section id="pricing" className="scroll-mt-20 py-20 md:py-28">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Free to Start. Built to Scale.
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-lg">
-              Teleba is completely free during our launch phase. Full features,
-              no hidden costs, no credit card required.
-            </p>
-            <div className="mt-12 gold-accent-card rounded-2xl p-6 sm:p-10 max-w-md mx-auto">
+            <AnimatedSection>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Free to Start. Built to Scale.
+              </h2>
+              <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-lg">
+                Teleba is completely free during our launch phase. Full
+                features, no hidden costs, no credit card required.
+              </p>
+            </AnimatedSection>
+            <AnimatedSection
+              delay={0.2}
+              className="mt-12 gold-accent-card rounded-2xl p-6 sm:p-10 max-w-md mx-auto"
+            >
               <span className="inline-block rounded-full bg-brand-gold/20 px-4 py-1 text-sm font-semibold text-brand-gold-dark">
                 Free through Q2 2026
               </span>
@@ -426,20 +446,23 @@ export default function Home() {
               >
                 Get Early Access
               </a>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
 
         {/* CTA */}
         <section id="cta" className="cta-gradient scroll-mt-20 py-20 md:py-28">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Ready to Take Control of Your Business?
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-red-100 text-lg">
-              Join the growing community of agents in Uganda who are digitizing
-              their operations with Teleba. Early access is completely free.
-            </p>
+            <AnimatedSection>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
+                Ready to Take Control of Your Business?
+              </h2>
+              <p className="mt-4 max-w-2xl mx-auto text-red-100 text-lg">
+                Join the growing community of agents in Uganda who are
+                digitizing their operations with Teleba. Early access is
+                completely free.
+              </p>
+            </AnimatedSection>
             <div className="mt-10">
               <WaitlistForm />
             </div>
@@ -475,12 +498,12 @@ export default function Home() {
         {/* FAQ */}
         <section className="scroll-mt-20 bg-gray-50 py-20 md:py-28">
           <div className="max-w-3xl mx-auto px-6">
-            <div className="text-center mb-10 md:mb-16">
+            <AnimatedSection className="text-center mb-10 md:mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Frequently Asked Questions
               </h2>
-            </div>
-            <div className="space-y-4">
+            </AnimatedSection>
+            <StaggerContainer className="space-y-4">
               {[
                 {
                   q: "What devices does Teleba work on?",
@@ -503,7 +526,7 @@ export default function Home() {
                   a: "Most agents are fully set up by the end of their first shift. You'll add your accounts, record a few transactions, and reconcile once — and from there it's just your normal routine.",
                 },
               ].map((item) => (
-                <div
+                <StaggerItem
                   key={item.q}
                   className="card-hover rounded-2xl bg-white border border-gray-200/60 p-6 shadow-sm"
                 >
@@ -511,9 +534,9 @@ export default function Home() {
                     {item.q}
                   </h3>
                   <p className="mt-3 text-gray-600 leading-relaxed">{item.a}</p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
