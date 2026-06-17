@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 const BASE_URL = "https://teleba.io";
+const ICON_VERSION = "20260617a";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -73,13 +74,9 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
   icons: {
-    icon: [
-      { url: "/icon.png", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-icon.png", type: "image/png" },
-    ],
-    shortcut: "/icon.png",
+    icon: [{ url: `/icon.png?v=${ICON_VERSION}`, type: "image/png" }],
+    apple: [{ url: `/apple-icon.png?v=${ICON_VERSION}`, type: "image/png" }],
+    shortcut: `/icon.png?v=${ICON_VERSION}`,
   },
 };
 
