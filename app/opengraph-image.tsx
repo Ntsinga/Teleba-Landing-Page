@@ -63,7 +63,7 @@ export default function OGImage() {
           fontWeight: 400,
         }}
       >
-        One app for all your float, commissions &amp; reconciliation
+        One app for all your transactions, commissions &amp; reconciliation
       </div>
 
       {/* Stats row */}

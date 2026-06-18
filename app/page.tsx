@@ -12,7 +12,7 @@ const BASE_URL = "https://teleba.io";
 export const metadata: Metadata = {
   title: "Teleba | Telecom and Agent Banking Platform",
   description:
-    "Teleba helps telecom and agent banking businesses reconcile accounts, track commissions, manage float, and run operations from one platform.",
+    "Track every transaction, commission, and balance in one place — and reconcile your day in 15 minutes.",
   alternates: {
     canonical: BASE_URL,
   },
@@ -158,13 +158,12 @@ export default function Home() {
               Now piloting in Uganda
             </span>
             <h1 className="max-w-3xl text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white">
-              One App for All Your{" "}
-              <span className="brand-text-gradient">Float, Commissions</span>{" "}
-              &amp; Reconciliation
+              One App for All Your Transactions, Commissions &amp;{" "}
+              <span className="brand-text-gradient">Reconciliation</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-red-100/80">
-              Stop juggling 7+ account books. Teleba handles it all — in 15
-              minutes a day.
+              Track every transaction, commission, and balance in one place —
+              and reconcile your day in 15 minutes.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a
