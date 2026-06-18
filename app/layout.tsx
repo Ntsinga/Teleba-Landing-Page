@@ -17,8 +17,9 @@ const ICON_VERSION = "20260617a";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
+  applicationName: "Teleba",
   title: {
-    default: "Teleba — The Agent-First Platform for Telecom & Banking Agents",
+    default: "Teleba",
     template: "%s | Teleba",
   },
   description:
@@ -36,12 +37,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Teleba", url: BASE_URL }],
   creator: "Teleba",
+  publisher: "Teleba",
   openGraph: {
     type: "website",
     locale: "en_UG",
     url: BASE_URL,
     siteName: "Teleba",
-    title: "Teleba — The Agent-First Platform for Telecom & Banking Agents",
+    title: "Teleba | Telecom and Agent Banking Platform",
     description:
       "Stop drowning in paperwork. Teleba helps mobile money and banking agents in Uganda reconcile accounts, track commissions, and grow their business.",
     images: [
@@ -55,7 +57,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Teleba — The Agent-First Platform for Telecom & Banking Agents",
+    title: "Teleba | Telecom and Agent Banking Platform",
     description:
       "Stop drowning in paperwork. Teleba helps mobile money and banking agents in Uganda reconcile accounts, track commissions, and grow their business.",
     images: [`${BASE_URL}/opengraph-image`],
@@ -77,6 +79,9 @@ export const metadata: Metadata = {
     icon: [{ url: `/icon.png?v=${ICON_VERSION}`, type: "image/png" }],
     apple: [{ url: `/apple-icon.png?v=${ICON_VERSION}`, type: "image/png" }],
     shortcut: `/icon.png?v=${ICON_VERSION}`,
+  },
+  appleWebApp: {
+    title: "Teleba",
   },
 };
 

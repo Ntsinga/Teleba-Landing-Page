@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { WaitlistForm } from "./components/WaitlistForm";
 import { AppScreenshots } from "./components/AppScreenshots";
 import {
@@ -7,6 +8,15 @@ import {
 } from "./components/AnimatedSection";
 
 const BASE_URL = "https://teleba.io";
+
+export const metadata: Metadata = {
+  title: "Teleba | Telecom and Agent Banking Platform",
+  description:
+    "Teleba helps telecom and agent banking businesses reconcile accounts, track commissions, manage float, and run operations from one platform.",
+  alternates: {
+    canonical: BASE_URL,
+  },
+};
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -35,9 +45,20 @@ const jsonLd = {
       "@id": `${BASE_URL}/#website`,
       url: BASE_URL,
       name: "Teleba",
+      alternateName: "Teleba | Telecom and Agent Banking Platform",
       description:
-        "The Agent-First Platform for Telecom and Banking Agents in Uganda",
+        "Telecom and agent banking platform for reconciliation, commission tracking, and float management in Uganda",
       publisher: { "@id": `${BASE_URL}/#organization` },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/#webpage`,
+      url: BASE_URL,
+      name: "Teleba | Telecom and Agent Banking Platform",
+      isPartOf: { "@id": `${BASE_URL}/#website` },
+      about: { "@id": `${BASE_URL}/#organization` },
+      description:
+        "Teleba helps telecom and agent banking businesses reconcile accounts, track commissions, manage float, and run operations from one platform.",
     },
     {
       "@type": "SoftwareApplication",
@@ -137,12 +158,13 @@ export default function Home() {
               Now piloting in Uganda
             </span>
             <h1 className="max-w-3xl text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white">
-              The <span className="brand-text-gradient">Agent-First</span>{" "}
-              Platform for Telecom &amp; Banking Agents
+              One App for All Your{" "}
+              <span className="brand-text-gradient">Float, Commissions</span>{" "}
+              &amp; Reconciliation
             </h1>
             <p className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-red-100/80">
-              One app for all your float accounts, commissions, and
-              reconciliation — in 15 minutes a day.
+              Stop juggling 7+ account books. Teleba handles it all — in 15
+              minutes a day.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a
