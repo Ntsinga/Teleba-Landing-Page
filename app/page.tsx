@@ -194,19 +194,25 @@ export default function Home() {
             </p>
             <div className="mt-6 grid grid-cols-3 gap-8 sm:gap-10 text-center">
               <div>
-                <p className="text-2xl md:text-3xl font-bold text-brand-gold">7+</p>
+                <p className="text-2xl md:text-3xl font-bold text-brand-gold">
+                  7+
+                </p>
                 <p className="text-xs sm:text-sm text-red-200/60 mt-1">
                   Account books replaced
                 </p>
               </div>
               <div>
-                <p className="text-2xl md:text-3xl font-bold text-brand-gold">2hrs</p>
+                <p className="text-2xl md:text-3xl font-bold text-brand-gold">
+                  2hrs
+                </p>
                 <p className="text-xs sm:text-sm text-red-200/60 mt-1">
                   Saved daily on reconciliation
                 </p>
               </div>
               <div>
-                <p className="text-2xl md:text-3xl font-bold text-brand-gold">100%</p>
+                <p className="text-2xl md:text-3xl font-bold text-brand-gold">
+                  100%
+                </p>
                 <p className="text-xs sm:text-sm text-red-200/60 mt-1">
                   Commission transparency
                 </p>
