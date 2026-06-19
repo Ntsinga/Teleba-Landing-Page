@@ -85,13 +85,15 @@ export default function Home() {
       />
       <div className="flex flex-col min-h-screen bg-white">
         {/* Navigation */}
-        <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
-          <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <span className="text-2xl font-bold tracking-tight">
-              <span className="text-brand-red">Tele</span>
-              <span className="text-brand-gold-dark">ba</span>
-            </span>
-            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+        <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+          <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div className="flex items-center">
+              <span className="text-2xl font-extrabold tracking-tight leading-none">
+                <span className="text-brand-red">Tele</span>
+                <span className="text-brand-gold-dark">ba</span>
+              </span>
+            </div>
+            <div className="hidden md:flex items-center gap-7 text-[13px] font-semibold uppercase tracking-wide text-gray-500">
               <a
                 href="#problems"
                 className="hover:text-brand-red transition-colors"
@@ -123,10 +125,10 @@ export default function Home() {
                 Pricing
               </a>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <a
                 href="https://app.teleba.io/(auth)/sign-in"
-                className="hidden sm:inline text-sm font-medium text-gray-600 hover:text-brand-red transition-colors"
+                className="hidden sm:inline-flex items-center rounded-full border border-gray-300 px-4 py-1.5 text-[13px] font-semibold text-gray-600 hover:border-brand-red hover:text-brand-red transition-colors"
               >
                 Sign In
               </a>
@@ -153,54 +155,56 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(255,50,50,0.18),transparent_70%)] pointer-events-none" />
 
-          <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-36 flex flex-col items-center text-center">
-            <span className="inline-block mb-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
+          <div className="relative max-w-6xl mx-auto px-6 py-14 md:py-20 flex flex-col items-center text-center">
+            <span className="inline-block mb-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
               Now piloting in Uganda
             </span>
-            <h1 className="max-w-3xl text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white">
-              One App for All Your Transactions, Commissions &amp;{" "}
-              <span className="brand-text-gradient">Reconciliation</span>
+            <h1 className="max-w-3xl text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-white">
+              One App for All Your{" "}
+              <span className="brand-text-gradient">
+                Transactions, Commissions &amp; Reconciliations
+              </span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-red-100/80">
+            <p className="mt-4 max-w-2xl text-lg md:text-xl leading-relaxed text-red-100/80">
               Track every transaction, commission, and balance in one place —
-              and reconcile your day in 15 minutes.
+              and reconcile in 15 minutes.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
                 href="#cta"
-                className="rounded-full bg-brand-gold px-8 py-3.5 text-base font-bold text-brand-red-deep shadow-lg hover:bg-brand-gold-dark transition-all hover:shadow-xl hover:-translate-y-0.5"
+                className="rounded-full bg-brand-gold px-8 py-3 text-base font-bold text-brand-red-deep shadow-lg hover:bg-brand-gold-dark transition-all hover:shadow-xl hover:-translate-y-0.5"
               >
                 Join the Waitlist — It&apos;s Free
               </a>
               <a
                 href="#features"
-                className="rounded-full border-2 border-white/30 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors"
+                className="rounded-full border-2 border-white/30 px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors"
               >
                 See Features
               </a>
             </div>
-            <p className="mt-5 text-sm text-red-200/60">
+            <p className="mt-3 text-sm text-red-200/60">
               Available on{" "}
               <span className="font-semibold text-red-100/80">
                 Android &amp; Web
               </span>
             </p>
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 text-center">
+            <div className="mt-6 grid grid-cols-3 gap-8 sm:gap-10 text-center">
               <div>
-                <p className="text-3xl font-bold text-brand-gold">7+</p>
-                <p className="text-sm text-red-200/60 mt-1">
+                <p className="text-2xl md:text-3xl font-bold text-brand-gold">7+</p>
+                <p className="text-xs sm:text-sm text-red-200/60 mt-1">
                   Account books replaced
                 </p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-brand-gold">2hrs</p>
-                <p className="text-sm text-red-200/60 mt-1">
+                <p className="text-2xl md:text-3xl font-bold text-brand-gold">2hrs</p>
+                <p className="text-xs sm:text-sm text-red-200/60 mt-1">
                   Saved daily on reconciliation
                 </p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-brand-gold">100%</p>
-                <p className="text-sm text-red-200/60 mt-1">
+                <p className="text-2xl md:text-3xl font-bold text-brand-gold">100%</p>
+                <p className="text-xs sm:text-sm text-red-200/60 mt-1">
                   Commission transparency
                 </p>
               </div>
@@ -361,7 +365,7 @@ export default function Home() {
                 {
                   step: "2",
                   title: "Reconcile in Minutes",
-                  desc: "At the end of your shift, snap photos of your balances. Teleba cross-references everything and flags discrepancies.",
+                  desc: "At the end of your shift, snap photos of your balances. Teleba quickly shows missing money or wrong figures.",
                 },
                 {
                   step: "3",

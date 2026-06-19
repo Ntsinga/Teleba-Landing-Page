@@ -40,7 +40,7 @@ export function AppScreenshots() {
           className="text-center"
         >
           <span className="inline-block mb-4 rounded-full bg-brand-gold/10 border border-brand-gold/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
-            Real product, real screens
+            Inside the Teleba app
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white">
             See Teleba in Action
