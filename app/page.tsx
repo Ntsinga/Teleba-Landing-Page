@@ -159,6 +159,9 @@ export default function Home() {
             <span className="inline-block mb-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
               Now piloting in Uganda
             </span>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-red-100/75">
+              Built for mobile money, telecom &amp; banking agents
+            </p>
             <h1 className="max-w-3xl text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-white">
               One App for All Your{" "}
               <span className="brand-text-gradient">
