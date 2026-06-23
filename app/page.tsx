@@ -12,7 +12,7 @@ const BASE_URL = "https://teleba.io";
 export const metadata: Metadata = {
   title: "Teleba | Telecom and Agent Banking Platform",
   description:
-    "Track every transaction, commission, and balance in one place — and reconcile your day in 15 minutes.",
+    "For mobile money, telecom, and banking agents. Track every transaction, commission, and balance, and finish reconciliation in 15 minutes.",
   alternates: {
     canonical: BASE_URL,
   },
@@ -58,7 +58,7 @@ const jsonLd = {
       isPartOf: { "@id": `${BASE_URL}/#website` },
       about: { "@id": `${BASE_URL}/#organization` },
       description:
-        "Teleba helps telecom and agent banking businesses reconcile accounts, track commissions, manage float, and run operations from one platform.",
+        "For mobile money, telecom, and banking agents. Track every transaction, commission, and balance, and finish reconciliation in 15 minutes.",
     },
     {
       "@type": "SoftwareApplication",
@@ -159,18 +159,23 @@ export default function Home() {
             <span className="inline-block mb-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
               Now piloting in Uganda
             </span>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-red-100/75">
-              Built for mobile money, telecom &amp; banking agents
+            <p className="mb-3 text-[0.72rem] sm:text-sm font-semibold uppercase tracking-[0.16em] sm:tracking-[0.18em] text-red-100/75">
+              <span className="sm:hidden">
+                For mobile money, telecom &amp; banking agents
+              </span>
+              <span className="hidden sm:inline">
+                Built for mobile money, telecom &amp; banking agents
+              </span>
             </p>
-            <h1 className="max-w-3xl text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-white">
+            <h1 className="max-w-3xl text-[1.65rem] sm:text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-white">
               One App for All Your{" "}
               <span className="brand-text-gradient">
                 Transactions, Commissions &amp; Reconciliations
               </span>
             </h1>
-            <p className="mt-4 max-w-2xl text-lg md:text-xl leading-relaxed text-red-100/80">
-              Track every transaction, commission, and balance in one place —
-              and reconcile in 15 minutes.
+            <p className="mt-4 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-red-100/80">
+              <span className="sm:hidden">Finish reconciliation in 15 minutes.</span>
+              <span className="hidden sm:inline">Track every transaction, commission, and balance in one place — and reconcile in 15 minutes.</span>
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
