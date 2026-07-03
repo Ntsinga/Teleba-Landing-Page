@@ -23,7 +23,7 @@ export function AppScreenshots() {
   return (
     <section
       id="app-preview"
-      className="scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-gray-900 py-20 md:py-32"
+      className="scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-[#1a1210] to-[#0f0a09] py-20 md:py-32"
     >
       {/* Background glow effects */}
       <div className="absolute inset-0 pointer-events-none">

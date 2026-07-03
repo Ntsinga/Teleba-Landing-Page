@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { WaitlistForm } from "./components/WaitlistForm";
 import { AppScreenshots } from "./components/AppScreenshots";
+import { HeroSlideshow } from "./components/HeroSlideshow";
 import {
   AnimatedSection,
   StaggerContainer,
@@ -21,7 +23,7 @@ function CardIcon({
       className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
         tone === "red"
           ? "bg-brand-red-light text-brand-red"
-          : "bg-brand-gold/15 text-brand-gold-dark"
+          : "bg-brand-gold text-brand-red-deep"
       }`}
     >
       <svg
@@ -40,9 +42,19 @@ function CardIcon({
   );
 }
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
+function Eyebrow({
+  children,
+  tone = "red",
+}: {
+  children: React.ReactNode;
+  tone?: "red" | "gold";
+}) {
   return (
-    <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.18em] text-brand-red">
+    <span
+      className={`mb-3 inline-block text-xs font-semibold uppercase tracking-[0.18em] ${
+        tone === "gold" ? "text-brand-gold" : "text-brand-red"
+      }`}
+    >
       {children}
     </span>
   );
@@ -122,22 +134,28 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="flex flex-col min-h-screen bg-white">
+      <div className="flex flex-col min-h-screen bg-background">
         {/* Navigation */}
-        <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
-          <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-            <div className="flex items-center">
-              <span className="text-2xl font-extrabold tracking-tight leading-none">
-                <span className="text-brand-red">Tele</span>
-                <span className="text-brand-gold-dark">ba</span>
+        <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-black/5">
+          <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+            <a href="#" className="flex items-center gap-2.5">
+              <Image
+                src="/logo-mark.png"
+                alt="Teleba"
+                width={34}
+                height={34}
+                className="rounded-[9px]"
+              />
+              <span className="wordmark-gold-gradient font-display text-[22px] font-black tracking-tight leading-none">
+                Teleba
               </span>
-            </div>
-            <div className="hidden md:flex items-center gap-7 text-[13px] font-semibold uppercase tracking-wide text-gray-500">
+            </a>
+            <div className="hidden md:flex items-center gap-7 font-mono-brand text-xs uppercase tracking-[0.08em] text-brand-ink-muted">
               <a
                 href="#problems"
                 className="hover:text-brand-red transition-colors"
               >
-                Why Teleba
+                Why
               </a>
               <a
                 href="#features"
@@ -155,7 +173,7 @@ export default function Home() {
                 href="#how-it-works"
                 className="hover:text-brand-red transition-colors"
               >
-                How It Works
+                How
               </a>
               <a
                 href="#pricing"
@@ -167,22 +185,22 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <a
                 href="https://app.teleba.io/(auth)/sign-in"
-                className="hidden sm:inline-flex items-center rounded-full border border-gray-300 px-4 py-1.5 text-[13px] font-semibold text-gray-600 hover:border-brand-red hover:text-brand-red transition-colors"
+                className="hidden sm:inline-flex items-center whitespace-nowrap rounded-full border border-black/15 px-3.5 py-2 font-mono-brand text-xs uppercase tracking-[0.06em] text-brand-ink-muted hover:border-brand-red hover:text-brand-red transition-colors"
               >
-                Sign In
+                Sign in
               </a>
               <a
                 href="#cta"
-                className="btn-primary-gradient rounded-full px-5 py-2 text-sm font-semibold text-white"
+                className="btn-primary-gradient rounded-full px-5 py-2.5 font-display text-[13px] font-bold text-white"
               >
-                Get Early Access
+                Get early access
               </a>
             </div>
           </div>
         </nav>
 
         {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-brand-red-deep via-brand-red-dark to-brand-red">
+        <section className="hero-maroon relative overflow-hidden">
           {/* Decorative rings */}
           <div
             className="hero-ring"
@@ -192,52 +210,59 @@ export default function Home() {
             className="hero-ring"
             style={{ width: 500, height: 500, bottom: -100, left: -100 }}
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(255,50,50,0.18),transparent_70%)] pointer-events-none" />
 
-          <div className="relative max-w-6xl mx-auto px-6 py-14 md:py-20 flex flex-col items-center text-center">
-            <span className="inline-block mb-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
-              Now piloting in Uganda
-            </span>
-            <p className="mb-3 text-[0.72rem] sm:text-sm font-semibold uppercase tracking-[0.16em] sm:tracking-[0.18em] text-red-100/75">
-              <span className="sm:hidden">
-                For mobile money, telecom &amp; banking agents
-              </span>
-              <span className="hidden sm:inline">
-                Built for mobile money, telecom &amp; banking agents
-              </span>
-            </p>
-            <h1 className="max-w-3xl text-[1.65rem] sm:text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-white">
-              One App for All Your{" "}
-              <span className="brand-text-gradient">
-                Transactions, Commissions &amp; Reconciliations
-              </span>
-            </h1>
-            <p className="mt-4 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-red-100/80">
-              <span className="sm:hidden">Finish reconciliation in 15 minutes.</span>
-              <span className="hidden sm:inline">Track every transaction, commission, and balance in one place — and reconcile in 15 minutes.</span>
-            </p>
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <a
-                href="#cta"
-                className="rounded-full bg-brand-gold px-8 py-3 text-base font-bold text-brand-red-deep shadow-lg hover:bg-brand-gold-dark transition-all hover:shadow-xl hover:-translate-y-0.5"
-              >
-                Join the Waitlist — It&apos;s Free
-              </a>
-              <a
-                href="#features"
-                className="rounded-full border-2 border-white/30 px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors"
-              >
-                See Features
-              </a>
+          <div className="relative max-w-6xl mx-auto px-6 py-14 md:py-20">
+            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12">
+              <div className="flex flex-col items-center text-center md:items-start md:text-left">
+                <span className="inline-block mb-3 rounded-full bg-brand-gold/10 backdrop-blur-sm border border-brand-gold/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
+                  Now piloting in Uganda
+                </span>
+                <p className="mb-3 text-[0.72rem] sm:text-sm font-semibold uppercase tracking-[0.16em] sm:tracking-[0.18em] text-red-100/75">
+                  <span className="sm:hidden">
+                    For mobile money, telecom &amp; banking agents
+                  </span>
+                  <span className="hidden sm:inline">
+                    Built for mobile money, telecom &amp; banking agents
+                  </span>
+                </p>
+                <h1 className="text-[1.65rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold leading-tight tracking-tight text-white">
+                  Manage all your{" "}
+                  <span className="brand-text-gradient">
+                    transactions, commissions &amp; reconciliations
+                  </span>{" "}
+                  in one place.
+                </h1>
+                <p className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-red-100/80">
+                  <span className="sm:hidden">Finish reconciliation in 15 minutes.</span>
+                  <span className="hidden sm:inline">Track every transaction, commission, and balance in one place — and reconcile in 15 minutes.</span>
+                </p>
+                <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="#cta"
+                    className="rounded-full bg-brand-gold px-8 py-3 text-base font-bold text-brand-red-deep shadow-lg hover:bg-brand-gold-dark transition-all hover:shadow-xl hover:-translate-y-0.5"
+                  >
+                    Join the Waitlist — It&apos;s Free
+                  </a>
+                  <a
+                    href="#features"
+                    className="rounded-full border-2 border-white/30 px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors text-center"
+                  >
+                    See Features
+                  </a>
+                </div>
+                <p className="mt-3 text-sm text-red-200/60">
+                  Available on{" "}
+                  <span className="font-semibold text-red-100/80">
+                    Android &amp; Web
+                  </span>
+                </p>
+              </div>
+
+              <HeroSlideshow />
             </div>
-            <p className="mt-3 text-sm text-red-200/60">
-              Available on{" "}
-              <span className="font-semibold text-red-100/80">
-                Android &amp; Web
-              </span>
-            </p>
-            <div className="mt-8 grid grid-cols-3 divide-x divide-white/10 text-center">
-              <div className="px-4 sm:px-8">
+
+            <div className="mt-12 grid grid-cols-3 divide-x divide-white/10 border-y border-white/15 text-center">
+              <div className="px-4 py-6 sm:px-8">
                 <p className="text-2xl md:text-3xl font-bold text-brand-gold">
                   7+
                 </p>
@@ -245,7 +270,7 @@ export default function Home() {
                   Account books replaced
                 </p>
               </div>
-              <div className="px-4 sm:px-8">
+              <div className="px-4 py-6 sm:px-8">
                 <p className="text-2xl md:text-3xl font-bold text-brand-gold">
                   2hrs
                 </p>
@@ -253,7 +278,7 @@ export default function Home() {
                   Saved daily on reconciliation
                 </p>
               </div>
-              <div className="px-4 sm:px-8">
+              <div className="px-4 py-6 sm:px-8">
                 <p className="text-2xl md:text-3xl font-bold text-brand-gold">
                   100%
                 </p>
@@ -266,10 +291,7 @@ export default function Home() {
         </section>
 
         {/* Problems */}
-        <section
-          id="problems"
-          className="scroll-mt-20 bg-gray-50 py-20 md:py-28"
-        >
+        <section id="problems" className="scroll-mt-20 py-20 md:py-28">
           <div className="max-w-6xl mx-auto px-6">
             <AnimatedSection className="text-center mb-10 md:mb-16">
               <Eyebrow>The Problem</Eyebrow>
@@ -360,14 +382,17 @@ export default function Home() {
         </section>
 
         {/* Features */}
-        <section id="features" className="scroll-mt-20 py-20 md:py-28">
+        <section
+          id="features"
+          className="features-maroon scroll-mt-20 py-20 md:py-28"
+        >
           <div className="max-w-6xl mx-auto px-6">
             <AnimatedSection className="text-center mb-10 md:mb-16">
-              <Eyebrow>The Solution</Eyebrow>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              <Eyebrow tone="gold">The Solution</Eyebrow>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
                 Everything You Need, One App
               </h2>
-              <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-lg">
+              <p className="mt-4 max-w-2xl mx-auto text-red-100/80 text-lg">
                 Teleba replaces your paper books, spreadsheets, and guesswork
                 with a purpose-built platform for agents.
               </p>
@@ -440,14 +465,14 @@ export default function Home() {
               ].map((feature) => (
                 <StaggerItem
                   key={feature.title}
-                  className="card-hover flex gap-5 rounded-2xl border border-gray-200/60 bg-white p-6 shadow-sm"
+                  className="flex gap-5 rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors duration-200 hover:bg-white/[0.08] hover:border-brand-gold/40"
                 >
                   <CardIcon tone="gold">{feature.icon}</CardIcon>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900">
+                    <h3 className="text-lg font-bold text-white">
                       {feature.title}
                     </h3>
-                    <p className="mt-2 text-gray-600 leading-relaxed">
+                    <p className="mt-2 text-red-100/75 leading-relaxed">
                       {feature.desc}
                     </p>
                   </div>
@@ -458,10 +483,7 @@ export default function Home() {
         </section>
 
         {/* How It Works */}
-        <section
-          id="how-it-works"
-          className="scroll-mt-20 bg-gray-50 py-20 md:py-28"
-        >
+        <section id="how-it-works" className="scroll-mt-20 py-20 md:py-28">
           <div className="max-w-6xl mx-auto px-6">
             <AnimatedSection className="text-center mb-10 md:mb-16">
               <Eyebrow>Simple Process</Eyebrow>
@@ -496,7 +518,7 @@ export default function Home() {
                 },
               ].map((item) => (
                 <StaggerItem key={item.step} className="text-center">
-                  <div className="step-circle relative inline-flex h-14 w-14 items-center justify-center rounded-full text-white text-xl font-bold ring-8 ring-gray-50">
+                  <div className="step-circle relative inline-flex h-14 w-14 items-center justify-center rounded-full text-brand-gold text-xl font-bold ring-8 ring-[#fbf7f2]">
                     {item.step}
                   </div>
                   <h3 className="mt-5 text-xl font-bold text-gray-900">
@@ -584,7 +606,7 @@ export default function Home() {
                   "Business analytics dashboard",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                       <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -658,7 +680,7 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-        <section className="scroll-mt-20 bg-gray-50 py-20 md:py-28">
+        <section className="scroll-mt-20 py-20 md:py-28">
           <div className="max-w-3xl mx-auto px-6">
             <AnimatedSection className="text-center mb-10 md:mb-16">
               <Eyebrow>FAQ</Eyebrow>
@@ -680,14 +702,6 @@ export default function Home() {
                   q: "Is my business data safe?",
                   a: "Your data is encrypted and stored securely in the cloud. Only you and the people you grant access to — like a supervisor — can see your records.",
                 },
-                {
-                  q: "What happens when the free period ends?",
-                  a: "We'll give you plenty of notice before any pricing changes. Agents who join during early access will get preferential rates. No surprise costs.",
-                },
-                {
-                  q: "How long does it take to get started?",
-                  a: "Most agents are fully set up by the end of their first shift. You'll add your accounts, record a few transactions, and reconcile once — and from there it's just your normal routine.",
-                },
               ].map((item) => (
                 <StaggerItem
                   key={item.q}
@@ -704,28 +718,34 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gradient-to-b from-gray-900 to-gray-950 py-12">
+        <footer className="bg-gradient-to-b from-[#1a1210] to-[#0b0706] py-12">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <span className="text-xl font-bold">
-                <span className="text-brand-red">Tele</span>
-                <span className="brand-text-gradient">ba</span>
-              </span>
-              <p className="text-gray-400 text-sm">
-                Telecom &amp; Banking Agent Application — Made for Uganda&apos;s
+              <div className="flex items-center gap-2.5">
+                <Image
+                  src="/logo-mark.png"
+                  alt="Teleba"
+                  width={30}
+                  height={30}
+                  className="rounded-lg"
+                />
+                <span className="wordmark-gold-gradient font-display text-xl font-black tracking-tight leading-none">
+                  Teleba
+                </span>
+              </div>
+              <p className="text-white/50 text-sm max-w-[40ch] text-center md:text-left">
+                Telecom &amp; banking agent platform — made for Uganda&apos;s
                 agents.
               </p>
-              <div className="flex items-center gap-4 text-sm">
+              <div className="flex items-center gap-4 text-sm text-white/50">
                 <a
                   href="/privacy-policy"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-white/60 hover:text-brand-gold transition-colors"
                 >
                   Privacy Policy
                 </a>
-                <span className="text-gray-600">·</span>
-                <p className="text-gray-500">
-                  &copy; {new Date().getFullYear()} Teleba. All rights reserved.
-                </p>
+                <span className="opacity-40">·</span>
+                <p>&copy; {new Date().getFullYear()} Teleba</p>
               </div>
             </div>
           </div>
