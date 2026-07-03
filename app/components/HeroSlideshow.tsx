@@ -39,6 +39,9 @@ export function HeroSlideshow() {
         />
       ))}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(91,6,17,0.74)] via-[rgba(91,6,17,0.10)] to-transparent" />
+      <span className="absolute left-4 top-4 rounded-full border border-brand-gold/35 bg-brand-red-deep/60 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-gold backdrop-blur-sm">
+        Now piloting in Uganda
+      </span>
       <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-2.5 p-5 sm:p-6">
         <p className="m-0 max-w-[26ch] text-base sm:text-lg font-bold leading-tight text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
           Built for the counter — where agents actually work.

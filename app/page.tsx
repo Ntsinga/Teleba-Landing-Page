@@ -212,11 +212,8 @@ export default function Home() {
           />
 
           <div className="relative max-w-6xl mx-auto px-6 py-14 md:py-20">
-            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12">
+            <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-12">
               <div className="flex flex-col items-center text-center md:items-start md:text-left">
-                <span className="inline-block mb-3 rounded-full bg-brand-gold/10 backdrop-blur-sm border border-brand-gold/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
-                  Now piloting in Uganda
-                </span>
                 <p className="mb-3 text-[0.72rem] sm:text-sm font-semibold uppercase tracking-[0.16em] sm:tracking-[0.18em] text-red-100/75">
                   <span className="sm:hidden">
                     For mobile money, telecom &amp; banking agents
@@ -225,27 +222,27 @@ export default function Home() {
                     Built for mobile money, telecom &amp; banking agents
                   </span>
                 </p>
-                <h1 className="text-[1.65rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold leading-tight tracking-tight text-white">
+                <h1 className="text-2xl sm:text-[1.7rem] md:text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight text-white">
                   Manage all your{" "}
                   <span className="brand-text-gradient">
                     transactions, commissions &amp; reconciliations
                   </span>{" "}
                   in one place.
                 </h1>
-                <p className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-red-100/80">
+                <p className="mt-4 max-w-2xl text-base sm:text-[1.05rem] leading-relaxed text-red-100/80">
                   <span className="sm:hidden">Finish reconciliation in 15 minutes.</span>
                   <span className="hidden sm:inline">Track every transaction, commission, and balance in one place — and reconcile in 15 minutes.</span>
                 </p>
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <a
                     href="#cta"
-                    className="rounded-full bg-brand-gold px-8 py-3 text-base font-bold text-brand-red-deep shadow-lg hover:bg-brand-gold-dark transition-all hover:shadow-xl hover:-translate-y-0.5"
+                    className="whitespace-nowrap rounded-full bg-brand-gold px-6 py-2.5 text-sm font-bold text-brand-red-deep shadow-lg hover:bg-brand-gold-dark transition-all hover:shadow-xl hover:-translate-y-0.5"
                   >
                     Join the Waitlist — It&apos;s Free
                   </a>
                   <a
                     href="#features"
-                    className="rounded-full border-2 border-white/30 px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors text-center"
+                    className="whitespace-nowrap rounded-full border-2 border-white/30 px-6 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors text-center"
                   >
                     See Features
                   </a>
