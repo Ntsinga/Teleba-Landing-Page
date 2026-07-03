@@ -42,13 +42,10 @@ export function HeroSlideshow() {
       <span className="absolute left-4 top-4 rounded-full border border-brand-gold/35 bg-brand-red-deep/60 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-gold backdrop-blur-sm">
         Now piloting in Uganda
       </span>
-      <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-2.5 p-5 sm:p-6">
+      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
         <p className="m-0 max-w-[26ch] text-base sm:text-lg font-bold leading-tight text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
           Built for the counter — where agents actually work.
         </p>
-        <span className="whitespace-nowrap rounded-full border border-brand-gold/35 bg-brand-red-deep/55 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-gold">
-          Kampala, Uganda
-        </span>
       </div>
       <div className="absolute right-4 top-4 flex gap-2">
         {slides.map((slide, i) => (

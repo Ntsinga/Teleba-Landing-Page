@@ -230,8 +230,13 @@ export default function Home() {
                   in one place.
                 </h1>
                 <p className="mt-4 max-w-2xl text-base sm:text-[1.05rem] leading-relaxed text-red-100/80">
-                  <span className="sm:hidden">Finish reconciliation in 15 minutes.</span>
-                  <span className="hidden sm:inline">Track every transaction, commission, and balance in one place — and reconcile in 15 minutes.</span>
+                  <span className="sm:hidden">
+                    Finish reconciliation in 15 minutes.
+                  </span>
+                  <span className="hidden sm:inline">
+                    Track every transaction, commission, and balance in one
+                    place — and reconcile in 15 minutes.
+                  </span>
                 </p>
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <a
@@ -497,35 +502,35 @@ export default function Home() {
                 aria-hidden="true"
               />
               <StaggerContainer className="grid md:grid-cols-3 gap-8 md:gap-10">
-              {[
-                {
-                  step: "1",
-                  title: "Record Transactions",
-                  desc: "Input your daily transactions across all networks and banks into one unified system as you serve customers.",
-                },
-                {
-                  step: "2",
-                  title: "Reconcile in Minutes",
-                  desc: "At the end of your shift, snap photos of your balances. Teleba quickly shows missing money or wrong figures.",
-                },
-                {
-                  step: "3",
-                  title: "Grow Your Business",
-                  desc: "Use commission insights, expense breakdowns, and liquidity recommendations to make smarter decisions every day.",
-                },
-              ].map((item) => (
-                <StaggerItem key={item.step} className="text-center">
-                  <div className="step-circle relative inline-flex h-14 w-14 items-center justify-center rounded-full text-brand-gold text-xl font-bold ring-8 ring-[#fbf7f2]">
-                    {item.step}
-                  </div>
-                  <h3 className="mt-5 text-xl font-bold text-gray-900">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-gray-600 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </StaggerItem>
-              ))}
+                {[
+                  {
+                    step: "1",
+                    title: "Record Transactions",
+                    desc: "Input your daily transactions across all networks and banks into one unified system as you serve customers.",
+                  },
+                  {
+                    step: "2",
+                    title: "Reconcile in Minutes",
+                    desc: "At the end of your shift, snap photos of your balances. Teleba quickly shows missing money or wrong figures.",
+                  },
+                  {
+                    step: "3",
+                    title: "Grow Your Business",
+                    desc: "Use commission insights, expense breakdowns, and liquidity recommendations to make smarter decisions every day.",
+                  },
+                ].map((item) => (
+                  <StaggerItem key={item.step} className="text-center">
+                    <div className="step-circle relative inline-flex h-14 w-14 items-center justify-center rounded-full text-brand-gold text-xl font-bold ring-8 ring-[#fbf7f2]">
+                      {item.step}
+                    </div>
+                    <h3 className="mt-5 text-xl font-bold text-gray-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-gray-600 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </StaggerItem>
+                ))}
               </StaggerContainer>
             </div>
           </div>
@@ -584,7 +589,7 @@ export default function Home() {
               className="mt-12 gold-accent-card rounded-2xl p-6 sm:p-10 max-w-md mx-auto"
             >
               <span className="inline-block rounded-full bg-brand-gold/20 px-4 py-1 text-sm font-semibold text-brand-gold-dark">
-                Free through Q2 2026
+                Free through Q3 2026
               </span>
               <p className="mt-6 text-5xl font-extrabold text-gray-900">Free</p>
               <p className="text-gray-500 mt-1">
