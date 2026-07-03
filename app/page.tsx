@@ -9,6 +9,45 @@ import {
 
 const BASE_URL = "https://teleba.io";
 
+function CardIcon({
+  children,
+  tone,
+}: {
+  children: React.ReactNode;
+  tone: "red" | "gold";
+}) {
+  return (
+    <span
+      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
+        tone === "red"
+          ? "bg-brand-red-light text-brand-red"
+          : "bg-brand-gold/15 text-brand-gold-dark"
+      }`}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-6 w-6"
+        aria-hidden="true"
+      >
+        {children}
+      </svg>
+    </span>
+  );
+}
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.18em] text-brand-red">
+      {children}
+    </span>
+  );
+}
+
 export const metadata: Metadata = {
   title: "Teleba | Telecom and Agent Banking Platform",
   description:
@@ -197,8 +236,8 @@ export default function Home() {
                 Android &amp; Web
               </span>
             </p>
-            <div className="mt-6 grid grid-cols-3 gap-8 sm:gap-10 text-center">
-              <div>
+            <div className="mt-8 grid grid-cols-3 divide-x divide-white/10 text-center">
+              <div className="px-4 sm:px-8">
                 <p className="text-2xl md:text-3xl font-bold text-brand-gold">
                   7+
                 </p>
@@ -206,7 +245,7 @@ export default function Home() {
                   Account books replaced
                 </p>
               </div>
-              <div>
+              <div className="px-4 sm:px-8">
                 <p className="text-2xl md:text-3xl font-bold text-brand-gold">
                   2hrs
                 </p>
@@ -214,7 +253,7 @@ export default function Home() {
                   Saved daily on reconciliation
                 </p>
               </div>
-              <div>
+              <div className="px-4 sm:px-8">
                 <p className="text-2xl md:text-3xl font-bold text-brand-gold">
                   100%
                 </p>
@@ -233,6 +272,7 @@ export default function Home() {
         >
           <div className="max-w-6xl mx-auto px-6">
             <AnimatedSection className="text-center mb-10 md:mb-16">
+              <Eyebrow>The Problem</Eyebrow>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 The Challenges Agents Face Every Day
               </h2>
@@ -244,32 +284,60 @@ export default function Home() {
             <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  icon: "📒",
+                  icon: (
+                    <>
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                    </>
+                  ),
                   title: "Too Many Books",
                   desc: "Agents juggle 7–14 different float accounts across mobile money networks and banks, all tracked on paper.",
                 },
                 {
-                  icon: "⏰",
+                  icon: (
+                    <>
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </>
+                  ),
                   title: "Hours Lost Reconciling",
                   desc: "End-of-day reconciliation takes 2–3 hours manually. Mistakes slip through and shortages go undetected for days.",
                 },
                 {
-                  icon: "💸",
+                  icon: (
+                    <>
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                      <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                      <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                      <line x1="1" y1="1" x2="23" y2="23" />
+                    </>
+                  ),
                   title: "Commission Opacity",
                   desc: "Very few agents know the exact rates per transaction or whether they're being paid correctly by institutions.",
                 },
                 {
-                  icon: "📉",
+                  icon: (
+                    <>
+                      <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
+                      <polyline points="16 17 22 17 22 11" />
+                    </>
+                  ),
                   title: "No Business Insights",
                   desc: "Without data, agents can't tell which services are most profitable or where money is leaking.",
                 },
                 {
-                  icon: "🔐",
+                  icon: (
+                    <>
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </>
+                  ),
                   title: "Theft & Embezzlement",
                   desc: "Employee fraud and customer scams are hard to detect without proper digital records and audit trails.",
                 },
                 {
-                  icon: "💧",
+                  icon: <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />,
                   title: "Liquidity Struggles",
                   desc: "Too much float, not enough cash — or vice versa. No data-driven guidance on optimal allocation.",
                 },
@@ -278,7 +346,7 @@ export default function Home() {
                   key={problem.title}
                   className="card-hover rounded-2xl bg-white p-8 shadow-sm border border-gray-200/60"
                 >
-                  <span className="text-3xl">{problem.icon}</span>
+                  <CardIcon tone="red">{problem.icon}</CardIcon>
                   <h3 className="mt-4 text-lg font-bold text-gray-900">
                     {problem.title}
                   </h3>
@@ -295,6 +363,7 @@ export default function Home() {
         <section id="features" className="scroll-mt-20 py-20 md:py-28">
           <div className="max-w-6xl mx-auto px-6">
             <AnimatedSection className="text-center mb-10 md:mb-16">
+              <Eyebrow>The Solution</Eyebrow>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Everything You Need, One App
               </h2>
@@ -306,32 +375,65 @@ export default function Home() {
             <StaggerContainer className="grid md:grid-cols-2 gap-5 md:gap-10">
               {[
                 {
-                  icon: "⚡",
+                  icon: (
+                    <>
+                      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                      <polyline points="2 17 12 22 22 17" />
+                      <polyline points="2 12 12 17 22 12" />
+                    </>
+                  ),
                   title: "Centralized Transaction Recording",
                   desc: "Record all transactions — MTN, Airtel, bank deposits — in one place. No more switching between 7 different books.",
                 },
                 {
-                  icon: "✅",
+                  icon: (
+                    <>
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </>
+                  ),
                   title: "Instant Reconciliation",
                   desc: "Reconcile in 15 minutes instead of 2 hours. AI verifies your balance photos against your recorded data to catch discrepancies.",
                 },
                 {
-                  icon: "📊",
+                  icon: (
+                    <>
+                      <line x1="19" y1="5" x2="5" y2="19" />
+                      <circle cx="6.5" cy="6.5" r="2.5" />
+                      <circle cx="17.5" cy="17.5" r="2.5" />
+                    </>
+                  ),
                   title: "Commission Tracking & Verification",
                   desc: "Know exactly what you earn per transaction. Teleba calculates what you're owed and flags underpayments automatically.",
                 },
                 {
-                  icon: "📋",
+                  icon: (
+                    <>
+                      <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+                      <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+                      <path d="M18 12a2 2 0 0 0 0 4h4v-4z" />
+                    </>
+                  ),
                   title: "Expense Management",
                   desc: "Track every expense — transport, airtime, supplies — and see your real profit after costs, not just commissions.",
                 },
                 {
-                  icon: "🔔",
+                  icon: (
+                    <>
+                      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </>
+                  ),
                   title: "Real-Time Notifications",
                   desc: "Supervisors and owners get instant alerts on reconciliations, losses, and expenses so problems are resolved fast.",
                 },
                 {
-                  icon: "📈",
+                  icon: (
+                    <>
+                      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                      <polyline points="16 7 22 7 22 13" />
+                    </>
+                  ),
                   title: "Business Analytics",
                   desc: "See which services are most profitable, transaction volume trends, and data-driven recommendations to grow your earnings.",
                 },
@@ -340,7 +442,7 @@ export default function Home() {
                   key={feature.title}
                   className="card-hover flex gap-5 rounded-2xl border border-gray-200/60 bg-white p-6 shadow-sm"
                 >
-                  <span className="text-2xl mt-1 shrink-0">{feature.icon}</span>
+                  <CardIcon tone="gold">{feature.icon}</CardIcon>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900">
                       {feature.title}
@@ -362,6 +464,7 @@ export default function Home() {
         >
           <div className="max-w-6xl mx-auto px-6">
             <AnimatedSection className="text-center mb-10 md:mb-16">
+              <Eyebrow>Simple Process</Eyebrow>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 How Teleba Works
               </h2>
@@ -369,7 +472,12 @@ export default function Home() {
                 Three simple steps to transform your daily operations.
               </p>
             </AnimatedSection>
-            <StaggerContainer className="grid md:grid-cols-3 gap-8 md:gap-10">
+            <div className="relative">
+              <div
+                className="hidden md:block absolute top-7 left-[16.66%] right-[16.66%] border-t-2 border-dashed border-gray-300"
+                aria-hidden="true"
+              />
+              <StaggerContainer className="grid md:grid-cols-3 gap-8 md:gap-10">
               {[
                 {
                   step: "1",
@@ -388,7 +496,7 @@ export default function Home() {
                 },
               ].map((item) => (
                 <StaggerItem key={item.step} className="text-center">
-                  <div className="step-circle inline-flex h-14 w-14 items-center justify-center rounded-full text-white text-xl font-bold">
+                  <div className="step-circle relative inline-flex h-14 w-14 items-center justify-center rounded-full text-white text-xl font-bold ring-8 ring-gray-50">
                     {item.step}
                   </div>
                   <h3 className="mt-5 text-xl font-bold text-gray-900">
@@ -399,7 +507,8 @@ export default function Home() {
                   </p>
                 </StaggerItem>
               ))}
-            </StaggerContainer>
+              </StaggerContainer>
+            </div>
           </div>
         </section>
 
@@ -442,6 +551,7 @@ export default function Home() {
         <section id="pricing" className="scroll-mt-20 py-20 md:py-28">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <AnimatedSection>
+              <Eyebrow>Pricing</Eyebrow>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Free to Start. Built to Scale.
               </h2>
@@ -474,7 +584,20 @@ export default function Home() {
                   "Business analytics dashboard",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="text-green-600 font-bold mt-0.5">✓</span>
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-3 w-3"
+                        aria-hidden="true"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -538,6 +661,7 @@ export default function Home() {
         <section className="scroll-mt-20 bg-gray-50 py-20 md:py-28">
           <div className="max-w-3xl mx-auto px-6">
             <AnimatedSection className="text-center mb-10 md:mb-16">
+              <Eyebrow>FAQ</Eyebrow>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Frequently Asked Questions
               </h2>
