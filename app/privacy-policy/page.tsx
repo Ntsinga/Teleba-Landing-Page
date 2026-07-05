@@ -194,7 +194,7 @@ export default function PrivacyPolicy() {
             <p className="mt-3">
               We retain your data for as long as your account is active or as
               needed to provide the Service. If you request account deletion, we
-              will delete or anonymize your personal data within 30 days, except
+              will delete or anonymize your personal data within 90 days, except
               where retention is required by law.
             </p>
           </SectionCard>

@@ -238,7 +238,7 @@ export default function Home() {
                     place — and reconcile in 15 minutes.
                   </span>
                 </p>
-                <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                <div className="mt-6 hidden md:flex flex-wrap gap-3">
                   <a
                     href="#cta"
                     className="whitespace-nowrap rounded-full bg-brand-gold px-6 py-2.5 text-sm font-bold text-brand-red-deep shadow-lg hover:bg-brand-gold-dark transition-all hover:shadow-xl hover:-translate-y-0.5"
@@ -252,7 +252,7 @@ export default function Home() {
                     See Features
                   </a>
                 </div>
-                <p className="mt-3 text-sm text-red-200/60">
+                <p className="mt-3 hidden md:block text-sm text-red-200/60">
                   Available on{" "}
                   <span className="font-semibold text-red-100/80">
                     Android &amp; Web
@@ -652,6 +652,9 @@ export default function Home() {
             <div className="mt-10">
               <WaitlistForm />
             </div>
+            <p className="mt-5 md:hidden font-mono-brand text-[11px] uppercase tracking-[0.12em] text-red-200/70">
+              Available on Android &amp; Web · Free during early access
+            </p>
             <p className="mt-6 text-sm text-red-200">
               Already have an account?{" "}
               <a
