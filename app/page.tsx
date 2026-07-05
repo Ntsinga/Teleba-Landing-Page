@@ -184,7 +184,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-3">
               <a
-                href="https://app.teleba.io/(auth)/sign-in"
+                href="/sign-in"
                 className="hidden sm:inline-flex items-center whitespace-nowrap rounded-full border border-black/15 px-3.5 py-2 font-mono-brand text-xs uppercase tracking-[0.06em] text-brand-ink-muted hover:border-brand-red hover:text-brand-red transition-colors"
               >
                 Sign in
