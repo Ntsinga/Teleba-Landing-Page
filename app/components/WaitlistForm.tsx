@@ -7,6 +7,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://api.zesha.app";
 type FormState = "idle" | "loading" | "success" | "duplicate" | "error";
 
 export function WaitlistForm() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [state, setState] = useState<FormState>("idle");
 
@@ -20,11 +21,15 @@ export function WaitlistForm() {
       const res = await fetch(`${API_URL}/waitlist`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({
+          email: email.trim(),
+          name: name.trim() || undefined,
+        }),
       });
 
       if (res.status === 201) {
         setState("success");
+        setName("");
         setEmail("");
       } else if (res.status === 409) {
         setState("duplicate");
@@ -51,8 +56,18 @@ export function WaitlistForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row gap-3 w-full max-w-md mx-auto"
+      className="flex flex-col sm:flex-row gap-3 w-full max-w-2xl mx-auto"
     >
+      <input
+        type="text"
+        placeholder="Your name (optional)"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+          if (state !== "idle") setState("idle");
+        }}
+        className="flex-1 rounded-full px-5 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-gold"
+      />
       <input
         type="email"
         required
