@@ -4,6 +4,8 @@ import { useState } from "react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://api.zesha.app";
 
+const COUNTRY_PREFIX = "+256";
+
 type FormState =
   | "idle"
   | "loading"
@@ -20,7 +22,9 @@ export function WaitlistForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email.trim() || !phone.trim()) return;
+    const national = phone.replace(/\D/g, "").replace(/^0+/, "");
+    if (!email.trim() || !national) return;
+    const fullPhone = `${COUNTRY_PREFIX}${national}`;
 
     setState("loading");
 
@@ -30,7 +34,7 @@ export function WaitlistForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: email.trim(),
-          phone_number: phone.trim(),
+          phone_number: fullPhone,
           name: name.trim() || undefined,
         }),
       });
@@ -67,7 +71,7 @@ export function WaitlistForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row gap-3 w-full max-w-4xl mx-auto"
+      className="flex flex-col lg:flex-row gap-3 w-full max-w-4xl mx-auto"
     >
       <input
         type="text"
@@ -90,17 +94,23 @@ export function WaitlistForm() {
         }}
         className="flex-1 rounded-full px-5 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-gold"
       />
-      <input
-        type="tel"
-        required
-        placeholder="Phone number, e.g. +256700000000"
-        value={phone}
-        onChange={(e) => {
-          setPhone(e.target.value);
-          if (state !== "idle") setState("idle");
-        }}
-        className="flex-1 rounded-full px-5 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-gold"
-      />
+      <div className="flex flex-1 items-center rounded-full bg-white pl-5 focus-within:ring-2 focus-within:ring-brand-gold">
+        <span className="text-sm text-gray-500 select-none">
+          {COUNTRY_PREFIX}
+        </span>
+        <input
+          type="tel"
+          inputMode="tel"
+          required
+          placeholder="700 000 000"
+          value={phone}
+          onChange={(e) => {
+            setPhone(e.target.value);
+            if (state !== "idle") setState("idle");
+          }}
+          className="min-w-0 flex-1 rounded-full bg-transparent py-3 pl-2 pr-5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none"
+        />
+      </div>
       <button
         type="submit"
         disabled={state === "loading"}
@@ -115,7 +125,7 @@ export function WaitlistForm() {
       )}
       {state === "invalid" && (
         <p className="w-full text-center text-xs text-red-200 -mt-1">
-          Please check your email and phone number (e.g. +256700000000).
+          Please check your email and phone number.
         </p>
       )}
       {state === "error" && (
