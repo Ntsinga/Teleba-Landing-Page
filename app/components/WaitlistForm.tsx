@@ -4,15 +4,23 @@ import { useState } from "react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://api.zesha.app";
 
-type FormState = "idle" | "loading" | "success" | "duplicate" | "error";
+type FormState =
+  | "idle"
+  | "loading"
+  | "success"
+  | "duplicate"
+  | "invalid"
+  | "error";
 
 export function WaitlistForm() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [state, setState] = useState<FormState>("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || !phone.trim()) return;
 
     setState("loading");
 
@@ -20,14 +28,22 @@ export function WaitlistForm() {
       const res = await fetch(`${API_URL}/waitlist`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({
+          email: email.trim(),
+          phone_number: phone.trim(),
+          name: name.trim() || undefined,
+        }),
       });
 
       if (res.status === 201) {
         setState("success");
+        setName("");
         setEmail("");
+        setPhone("");
       } else if (res.status === 409) {
         setState("duplicate");
+      } else if (res.status === 422) {
+        setState("invalid");
       } else {
         setState("error");
       }
@@ -51,8 +67,18 @@ export function WaitlistForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row gap-3 w-full max-w-md mx-auto"
+      className="flex flex-col sm:flex-row gap-3 w-full max-w-4xl mx-auto"
     >
+      <input
+        type="text"
+        placeholder="Your name (optional)"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+          if (state !== "idle") setState("idle");
+        }}
+        className="flex-1 rounded-full px-5 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-gold"
+      />
       <input
         type="email"
         required
@@ -60,6 +86,17 @@ export function WaitlistForm() {
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
+          if (state !== "idle") setState("idle");
+        }}
+        className="flex-1 rounded-full px-5 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-gold"
+      />
+      <input
+        type="tel"
+        required
+        placeholder="Phone number, e.g. +256700000000"
+        value={phone}
+        onChange={(e) => {
+          setPhone(e.target.value);
           if (state !== "idle") setState("idle");
         }}
         className="flex-1 rounded-full px-5 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-gold"
@@ -74,6 +111,11 @@ export function WaitlistForm() {
       {state === "duplicate" && (
         <p className="w-full text-center text-xs text-red-200 -mt-1">
           That email is already on the waitlist.
+        </p>
+      )}
+      {state === "invalid" && (
+        <p className="w-full text-center text-xs text-red-200 -mt-1">
+          Please check your email and phone number (e.g. +256700000000).
         </p>
       )}
       {state === "error" && (
