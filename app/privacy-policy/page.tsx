@@ -82,7 +82,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h1>
           <p className="mt-3 font-mono-brand text-xs uppercase tracking-[0.08em] text-red-100/60">
-            Last updated: May 18, 2026
+            Last updated: November 2, 2026
           </p>
         </div>
       </section>
@@ -230,7 +230,67 @@ export default function PrivacyPolicy() {
             </p>
           </SectionCard>
 
-          <SectionCard n="09" title="Changes to This Policy">
+          <SectionCard n="09" title="Agent Survey">
+            <p className="mt-3">
+              This section applies to the Teleba Agent Survey, including when an
+              interviewer completes it with you. Taking part is voluntary.
+            </p>
+            <h3 className="mt-4 text-lg font-semibold text-foreground">
+              9.1 What We Collect
+            </h3>
+            <ul className="mt-2 list-disc pl-6 space-y-1 marker:text-brand-red">
+              <li>
+                Your answers about how you started and run your agent business.
+                We never ask for exact earnings, balances, or losses.
+              </li>
+              <li>Your business name and district or area.</li>
+              <li>
+                The location of your business, using your device&apos;s GPS, but
+                only if you allow it. You can continue without sharing it.
+              </li>
+              <li>
+                Your name and phone number, only if you choose to join our
+                early-access group.
+              </li>
+              <li>The name of the interviewer, if there is one.</li>
+            </ul>
+            <h3 className="mt-4 text-lg font-semibold text-foreground">
+              9.2 How We Use It
+            </h3>
+            <p className="mt-2">
+              We use survey data to understand the problems mobile money and
+              agent banking businesses face, raise awareness of them, and build
+              solutions. We use location to see which areas we have reached.
+            </p>
+            <h3 className="mt-4 text-lg font-semibold text-foreground">
+              9.3 Confidentiality and Sharing
+            </h3>
+            <p className="mt-2">
+              Your answers are confidential. We may share anonymized, combined
+              results in reports and proposals, for example the share of agents
+              who report a problem. We will not share your name, phone number,
+              business name, or exact location in those results. The survey runs
+              on Google Forms, so Google stores responses on our behalf.
+            </p>
+            <h3 className="mt-4 text-lg font-semibold text-foreground">
+              9.4 Keeping and Removing Your Data
+            </h3>
+            <p className="mt-2">
+              We keep survey data only as long as we need it for this research.
+              You can ask us to access or delete your responses by contacting us
+              at{" "}
+              <a
+                href="mailto:info@teleba.io"
+                className="font-semibold text-brand-red hover:underline"
+              >
+                info@teleba.io
+              </a>
+              . We cannot remove your answers from combined results that have
+              already been shared.
+            </p>
+          </SectionCard>
+
+          <SectionCard n="10" title="Changes to This Policy">
             <p className="mt-3">
               We may update this Privacy Policy from time to time. We will
               notify you of material changes by posting the new policy on this
@@ -240,7 +300,7 @@ export default function PrivacyPolicy() {
             </p>
           </SectionCard>
 
-          <SectionCard n="10" title="Contact Us">
+          <SectionCard n="11" title="Contact Us">
             <p className="mt-3">
               If you have any questions about this Privacy Policy, please
               contact us:
