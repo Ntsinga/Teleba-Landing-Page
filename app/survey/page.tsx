@@ -24,7 +24,7 @@ export default function SurveyPage() {
           so we can see which areas we have reached.
         </span>,
         "Answer the questions. We never ask for exact earnings, balances or losses.",
-        "Your answers are confidential and only used to improve Teleba.",
+        "Your answers are confidential and help us raise awareness of mobile money and agent banking problems, and solve them.",
       ]}
     />
   );
