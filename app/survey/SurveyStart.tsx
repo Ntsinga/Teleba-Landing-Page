@@ -133,7 +133,7 @@ export function SurveyStart({
     <div className="flex flex-col gap-4">
       {enumerator &&
         (editingName ? (
-          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground">
+          <label className="flex flex-col gap-2 text-sm font-semibold text-white">
             Your name
             <input
               type="text"
@@ -142,7 +142,7 @@ export function SurveyStart({
               autoComplete="name"
               maxLength={60}
               placeholder="e.g. Sarah Nakato"
-              className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-base font-normal"
+              className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-base font-normal text-foreground"
             />
           </label>
         ) : (
@@ -164,7 +164,7 @@ export function SurveyStart({
         type="button"
         onClick={start}
         disabled={busy || nameMissing}
-        className="btn-primary-gradient w-full rounded-full px-6 py-4 font-display text-base font-bold text-white disabled:opacity-60"
+        className="w-full rounded-full bg-brand-gold px-6 py-4 font-display text-base font-bold text-brand-red-deep shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-gold-dark hover:shadow-xl disabled:opacity-60"
       >
         {status === "locating"
           ? "Finding your location…"
@@ -174,7 +174,7 @@ export function SurveyStart({
       </button>
 
       {status === "locating" && (
-        <p className="text-center text-sm text-brand-ink-muted">
+        <p className="text-center text-sm text-red-100">
           If your phone asks, tap <strong>Allow</strong> to share your location.
         </p>
       )}

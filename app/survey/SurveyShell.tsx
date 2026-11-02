@@ -76,10 +76,10 @@ export function SurveyShell({
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-dvh flex-col bg-background">
       <SurveyNav />
 
-      <section className="hero-maroon relative overflow-hidden">
+      <section className="hero-maroon relative flex flex-1 items-center overflow-hidden">
         <div
           className="hero-ring"
           style={{ width: 700, height: 700, top: -200, right: -150 }}
@@ -88,7 +88,7 @@ export function SurveyShell({
           className="hero-ring"
           style={{ width: 500, height: 500, bottom: -100, left: -100 }}
         />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 md:grid-cols-[0.85fr_1.15fr] md:gap-12 md:py-20">
+        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8 px-6 py-10 md:grid-cols-[0.85fr_1.15fr] md:gap-12 md:py-8">
           <div className="flex flex-col gap-6">
             <div>
               <p className="font-mono-brand text-xs uppercase tracking-[0.16em] text-brand-gold">
@@ -101,12 +101,10 @@ export function SurveyShell({
                 {intro}
               </p>
             </div>
-            <div className="rounded-3xl bg-background p-5 shadow-lg">
-              <SurveyStart enumerator={enumerator} onFormReady={setFormUrl} />
-            </div>
+            <SurveyStart enumerator={enumerator} onFormReady={setFormUrl} />
           </div>
 
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#241a18] shadow-[0_30px_70px_rgba(0,0,0,0.35)]">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#241a18] shadow-[0_30px_70px_rgba(0,0,0,0.35)] md:aspect-auto md:h-[min(46dvh,420px)]">
             <Image
               src="/hero-survey.webp"
               alt="An interviewer with a phone talking to a mobile money agent at her kiosk in a Kampala market"
@@ -119,14 +117,14 @@ export function SurveyShell({
         </div>
       </section>
 
-      <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-6 py-12">
-        <ul className="grid gap-4 md:grid-cols-3">
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-5">
+        <ul className="grid gap-3 md:grid-cols-3">
           {steps.map((step, index) => (
             <li
               key={index}
-              className="rounded-2xl border border-black/10 bg-white p-5 text-sm leading-relaxed text-brand-ink-muted"
+              className="rounded-2xl border border-black/10 bg-white p-4 text-sm leading-snug text-brand-ink-muted"
             >
-              <span className="mb-2 block font-mono-brand text-xs text-brand-red">
+              <span className="mb-1 block font-mono-brand text-xs text-brand-red">
                 {String(index + 1).padStart(2, "0")}
               </span>
               {step}
