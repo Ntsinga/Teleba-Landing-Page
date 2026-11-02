@@ -101,7 +101,9 @@ export function SurveyShell({
                 {intro}
               </p>
             </div>
-            <SurveyStart enumerator={enumerator} onFormReady={setFormUrl} />
+            <div className="hidden md:block">
+              <SurveyStart enumerator={enumerator} onFormReady={setFormUrl} />
+            </div>
           </div>
 
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#241a18] shadow-[0_30px_70px_rgba(0,0,0,0.35)] md:aspect-auto md:h-[min(46dvh,420px)]">
@@ -131,6 +133,11 @@ export function SurveyShell({
             </li>
           ))}
         </ul>
+
+        {/* On phones, people read the steps before they reach the button. */}
+        <div className="md:hidden">
+          <SurveyStart enumerator={enumerator} onFormReady={setFormUrl} />
+        </div>
 
         <p className="text-center text-xs text-brand-ink-muted">
           Questions? Email{" "}

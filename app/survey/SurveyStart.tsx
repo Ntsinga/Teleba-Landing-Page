@@ -133,7 +133,7 @@ export function SurveyStart({
     <div className="flex flex-col gap-4">
       {enumerator &&
         (editingName ? (
-          <label className="flex flex-col gap-2 text-sm font-semibold text-white">
+          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground md:text-white">
             Your name
             <input
               type="text"
@@ -174,7 +174,7 @@ export function SurveyStart({
       </button>
 
       {status === "locating" && (
-        <p className="text-center text-sm text-red-100">
+        <p className="text-center text-sm text-brand-ink-muted md:text-red-100">
           If your phone asks, tap <strong>Allow</strong> to share your location.
         </p>
       )}
