@@ -1,7 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { LOCATION_PLACEHOLDER, SURVEY_FORM_URL } from "./config";
+import { useEffect, useState } from "react";
+import {
+  IN_PERSON_CHOICE,
+  INTERVIEWER_NAME_ENTRY,
+  LOCATION_PLACEHOLDER,
+  SURVEY_FORM_URL,
+  SURVEY_MODE_ENTRY,
+} from "./config";
+
+const ENUMERATOR_NAME_KEY = "teleba:surveyEnumeratorName";
 
 type Status =
   | "idle"
@@ -12,25 +20,74 @@ type Status =
   | "timeout"
   | "unsupported";
 
-function formUrlWith(location: string) {
+function formUrlWith(location: string, enumeratorName: string) {
   const url = SURVEY_FORM_URL.replace(
     LOCATION_PLACEHOLDER,
     encodeURIComponent(location),
   );
-  return url + (url.includes("?") ? "&" : "?") + "embedded=true&hl=en";
+  const params = ["embedded=true", "hl=en"];
+  if (enumeratorName) {
+    params.push(
+      `${INTERVIEWER_NAME_ENTRY}=${encodeURIComponent(enumeratorName)}`,
+      `${SURVEY_MODE_ENTRY}=${encodeURIComponent(IN_PERSON_CHOICE)}`,
+    );
+  }
+  return url + (url.includes("?") ? "&" : "?") + params.join("&");
 }
 
-export function SurveyStart() {
+// Browser storage can be blocked or cleared; the name is then just retyped.
+function readSavedName() {
+  try {
+    return window.localStorage.getItem(ENUMERATOR_NAME_KEY) ?? "";
+  } catch {
+    return "";
+  }
+}
+
+function saveName(name: string) {
+  try {
+    window.localStorage.setItem(ENUMERATOR_NAME_KEY, name);
+  } catch {
+    // Nothing to do: this survey still gets the name through the form link.
+  }
+}
+
+type SurveyStartProps = {
+  enumerator?: boolean;
+  onFormReady: (url: string) => void;
+};
+
+export function SurveyStart({
+  enumerator = false,
+  onFormReady,
+}: SurveyStartProps) {
   const [status, setStatus] = useState<Status>("idle");
-  const [formUrl, setFormUrl] = useState<string | null>(null);
+  const [name, setName] = useState("");
+  const [editingName, setEditingName] = useState(true);
   const configured = SURVEY_FORM_URL.includes(LOCATION_PLACEHOLDER);
+  const enumeratorName = enumerator ? name.trim() : "";
+  const nameMissing = enumerator && !enumeratorName;
+
+  // Read after mount: the saved name only exists in the browser.
+  useEffect(() => {
+    if (!enumerator) return;
+    const saved = readSavedName();
+    if (saved) {
+      setName(saved);
+      setEditingName(false);
+    }
+  }, [enumerator]);
 
   function openForm(location: string) {
     setStatus("opening");
-    setFormUrl(formUrlWith(location));
+    onFormReady(formUrlWith(location, enumeratorName));
   }
 
   function start() {
+    if (enumerator) {
+      saveName(enumeratorName);
+      setEditingName(false);
+    }
     if (!("geolocation" in navigator) || !window.isSecureContext) {
       setStatus("unsupported");
       return;
@@ -60,18 +117,6 @@ export function SurveyStart() {
     );
   }
 
-  if (formUrl) {
-    return (
-      <iframe
-        src={formUrl}
-        title="Teleba agent survey"
-        className="h-[80vh] min-h-[600px] w-full rounded-2xl border border-black/10 bg-white"
-      >
-        Loading…
-      </iframe>
-    );
-  }
-
   const busy = status === "locating" || status === "opening";
   const problem: Record<string, string> = {
     denied:
@@ -86,10 +131,39 @@ export function SurveyStart() {
 
   return (
     <div className="flex flex-col gap-4">
+      {enumerator &&
+        (editingName ? (
+          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground">
+            Your name
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              autoComplete="name"
+              maxLength={60}
+              placeholder="e.g. Sarah Nakato"
+              className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-base font-normal"
+            />
+          </label>
+        ) : (
+          <p className="rounded-2xl border border-black/10 bg-white p-4 text-sm text-brand-ink-muted">
+            Collecting as{" "}
+            <strong className="text-foreground">{enumeratorName}</strong>
+            {" · "}
+            <button
+              type="button"
+              onClick={() => setEditingName(true)}
+              className="font-semibold underline underline-offset-2"
+            >
+              Change
+            </button>
+          </p>
+        ))}
+
       <button
         type="button"
         onClick={start}
-        disabled={busy}
+        disabled={busy || nameMissing}
         className="btn-primary-gradient w-full rounded-full px-6 py-4 font-display text-base font-bold text-white disabled:opacity-60"
       >
         {status === "locating"
@@ -111,7 +185,8 @@ export function SurveyStart() {
           <button
             type="button"
             onClick={() => openForm("Not captured")}
-            className="mt-3 font-semibold underline underline-offset-2"
+            disabled={nameMissing}
+            className="mt-3 font-semibold underline underline-offset-2 disabled:opacity-60"
           >
             Continue without location
           </button>
