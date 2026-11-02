@@ -8,3 +8,10 @@ export const SURVEY_FORM_URL =
 
 // The placeholder in SURVEY_FORM_URL that is replaced with the coordinates.
 export const LOCATION_PLACEHOLDER = "TELEBA_LOCATION";
+
+// Form fields pre-filled on teleba.io/survey/enumerator. These IDs change if
+// the form is rebuilt: copy the new ones from the "Enumerator link" line the
+// form script logs.
+export const INTERVIEWER_NAME_ENTRY = "entry.456329883";
+export const SURVEY_MODE_ENTRY = "entry.2135718706";
+export const IN_PERSON_CHOICE = "In person with an interviewer";
