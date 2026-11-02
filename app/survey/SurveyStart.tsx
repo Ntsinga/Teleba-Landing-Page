@@ -164,7 +164,7 @@ export function SurveyStart({
         type="button"
         onClick={start}
         disabled={busy || nameMissing}
-        className="w-full rounded-full bg-brand-gold px-6 py-4 font-display text-base font-bold text-brand-red-deep shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-gold-dark hover:shadow-xl disabled:opacity-60"
+        className="w-full rounded-full bg-brand-gold px-6 py-4 font-display text-base font-bold text-brand-red-deep shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-60"
       >
         {status === "locating"
           ? "Finding your location…"
