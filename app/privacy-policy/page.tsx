@@ -245,8 +245,8 @@ export default function PrivacyPolicy() {
               </li>
               <li>Your business name and district or area.</li>
               <li>
-                The location of your business, using your device&apos;s GPS, but
-                only if you allow it. You can continue without sharing it.
+                The location of your business, from the GPS of the phone used to
+                complete the survey. The survey cannot start without it.
               </li>
               <li>
                 Your name and phone number, only if you choose to join our
