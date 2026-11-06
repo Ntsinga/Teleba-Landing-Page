@@ -3,9 +3,11 @@
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import {
+  API_URL,
   IN_PERSON_CHOICE,
   INTERVIEWER_NAME_ENTRY,
   LOCATION_PLACEHOLDER,
+  REFERENCE_ID_ENTRY,
   SURVEY_FORM_URL,
   SURVEY_MODE_ENTRY,
 } from "./config";
@@ -19,6 +21,7 @@ type Status =
   | "denied"
   | "unavailable"
   | "timeout"
+  | "offline"
   | "unsupported";
 
 type Platform = "ios" | "android" | "other";
@@ -70,12 +73,47 @@ function LocationHelp({ platform }: { platform: Platform }) {
   );
 }
 
-function formUrlWith(location: string, enumeratorName: string) {
+// Logs the start with the Teleba API, which records the IP address and time,
+// and returns the reference ID that ties the form response to this start.
+async function logSurveyStart(body: {
+  source: "survey" | "enumerator";
+  enumerator_name: string | null;
+  latitude: number;
+  longitude: number;
+  accuracy_m: number;
+}): Promise<string> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 15000);
+  try {
+    const res = await fetch(`${API_URL}/survey-starts`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+    if (!res.ok) throw new Error(`Survey start failed: ${res.status}`);
+    const data: { reference_id?: string } = await res.json();
+    if (!data.reference_id) throw new Error("Survey start returned no reference ID");
+    return data.reference_id;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function formUrlWith(
+  location: string,
+  enumeratorName: string,
+  referenceId: string,
+) {
   const url = SURVEY_FORM_URL.replace(
     LOCATION_PLACEHOLDER,
     encodeURIComponent(location),
   );
-  const params = ["embedded=true", "hl=en"];
+  const params = [
+    "embedded=true",
+    "hl=en",
+    `${REFERENCE_ID_ENTRY}=${encodeURIComponent(referenceId)}`,
+  ];
   if (enumeratorName) {
     params.push(
       `${INTERVIEWER_NAME_ENTRY}=${encodeURIComponent(enumeratorName)}`,
@@ -158,9 +196,31 @@ export function SurveyStart({
     };
   }, []);
 
-  function openForm(location: string) {
+  // The form only opens with a logged reference ID, so every response can be
+  // checked against its start.
+  async function openForm(coords: GeolocationCoordinates) {
     setStatus("opening");
-    onFormReady(formUrlWith(location, enumeratorName));
+    const { latitude, longitude, accuracy } = coords;
+    let referenceId: string;
+    try {
+      referenceId = await logSurveyStart({
+        source: enumerator ? "enumerator" : "survey",
+        enumerator_name: enumeratorName || null,
+        latitude,
+        longitude,
+        accuracy_m: accuracy,
+      });
+    } catch {
+      setStatus("offline");
+      return;
+    }
+    onFormReady(
+      formUrlWith(
+        `${latitude.toFixed(6)}, ${longitude.toFixed(6)} (±${Math.round(accuracy)} m)`,
+        enumeratorName,
+        referenceId,
+      ),
+    );
   }
 
   function start() {
@@ -175,10 +235,7 @@ export function SurveyStart({
     setStatus("locating");
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        const { latitude, longitude, accuracy } = pos.coords;
-        openForm(
-          `${latitude.toFixed(6)}, ${longitude.toFixed(6)} (±${Math.round(accuracy)} m)`,
-        );
+        void openForm(pos.coords);
       },
       (err) => {
         if (err.code === err.PERMISSION_DENIED) setStatus("denied");
@@ -199,13 +256,18 @@ export function SurveyStart({
 
   const busy = status === "locating" || status === "opening";
   const retryable =
-    status === "denied" || status === "timeout" || status === "unavailable";
+    status === "denied" ||
+    status === "timeout" ||
+    status === "unavailable" ||
+    status === "offline";
   const problem: Record<string, ReactNode> = {
     denied: <LocationHelp platform={platform} />,
     timeout:
       "Your location took too long to find. Move near a door or window, then tap Try again.",
     unavailable:
       "We couldn't get your location. Turn on location (GPS) in your phone settings, then tap Try again.",
+    offline:
+      "We couldn't start the survey. Check your internet connection, then tap Try again.",
     unsupported:
       "This browser can't share location, which the survey needs. Open this link in Chrome or Safari instead.",
   };

@@ -15,3 +15,10 @@ export const LOCATION_PLACEHOLDER = "TELEBA_LOCATION";
 export const INTERVIEWER_NAME_ENTRY = "entry.456329883";
 export const SURVEY_MODE_ENTRY = "entry.2135718706";
 export const IN_PERSON_CHOICE = "In person with an interviewer";
+
+// "Reference ID (filled automatically, do not change)": links a response to
+// the survey start the Teleba API logged.
+export const REFERENCE_ID_ENTRY = "entry.1989797680";
+
+// The Teleba API that logs each survey start and issues its reference ID.
+export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://api.zesha.app";

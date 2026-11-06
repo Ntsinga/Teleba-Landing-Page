@@ -253,6 +253,11 @@ export default function PrivacyPolicy() {
                 early-access group.
               </li>
               <li>The name of the interviewer, if there is one.</li>
+              <li>
+                When the survey starts: the time, the phone&apos;s IP address and
+                browser details, and a reference number that links your answers
+                to that start. We use these to check that responses are genuine.
+              </li>
             </ul>
             <h3 className="mt-4 text-lg font-semibold text-foreground">
               9.2 How We Use It
@@ -270,7 +275,9 @@ export default function PrivacyPolicy() {
               results in reports and proposals, for example the share of agents
               who report a problem. We will not share your name, phone number,
               business name, or exact location in those results. The survey runs
-              on Google Forms, so Google stores responses on our behalf.
+              on Google Forms, so Google stores responses on our behalf. The
+              start details above, including location, are stored on
+              Teleba&apos;s own servers.
             </p>
             <h3 className="mt-4 text-lg font-semibold text-foreground">
               9.4 Keeping and Removing Your Data
